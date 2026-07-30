@@ -1,6 +1,8 @@
 export const siteConfig = {
   name: "eliáš jan procházka",
   shortName: "ejp",
+  url: "https://www.eliasjp.cz",
+  domain: "www.eliasjp.cz",
   email: "e.japrrr@gmail.com",
   roles: ["vývojář", "designer", "analytik"],
 
@@ -20,10 +22,12 @@ export const siteConfig = {
     contact: { title: "kontakt", number: "05" }
   },
 
+  location: "plzeň, cz",
+
   social: [
-    { label: "github", href: "https://github.com/ejaprrr" },
-    { label: "linkedin", href: "https://linkedin.com/in/ejaprrr" },
-    { label: "instagram", href: "https://instagram.com/e.japrrr" }
+    { label: "github", handle: "ejaprrr", href: "https://github.com/ejaprrr" },
+    { label: "linkedin", handle: "eliasjp", href: "https://linkedin.com/in/eliasjp" },
+    { label: "instagram", handle: "e.jpqx", href: "https://instagram.com/e.jpqx" }
   ],
 
   skills: [

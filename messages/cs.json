@@ -4,7 +4,11 @@
     "shortName": "ejp",
     "openLink": "otevřít odkaz",
     "email": "e.japrrr@gmail.com",
-    "roles": ["vývojář", "designer", "analytik"],
+    "roles": [
+      "vývojář",
+      "designer",
+      "analytik"
+    ],
     "close": "zavřít"
   },
   "seo": {

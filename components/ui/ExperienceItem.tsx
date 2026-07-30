@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Scribble } from "@/components/ui/Scribble";
 import { RevealStagger } from "@/components/ui/Reveal";
-
+import { useGraceNavigation } from "@/hooks/useGraceNavigation";
 
 interface ExperienceItemProps {
   year: string;
@@ -17,10 +17,18 @@ interface ExperienceItemProps {
 
 export function ExperienceItem({ delay, year, title, role, location, description, url }: ExperienceItemProps) {
   const [isHovered, setIsHovered] = useState(false);
+  const { navigateWithGrace, navigatingTo } = useGraceNavigation();
 
+  const isLink = !!url;
+  const isClicked = url ? navigatingTo === url : false;
+
+  const handleClick = (e: React.MouseEvent<HTMLElement>) => {
+    if (!isLink || !url) return;
+    navigateWithGrace(e, url, true);
+  };
 
   const Wrapper = url ? "a" : "div";
-  const wrapperProps = url ? { href: url, target: "_blank", rel: "noopener noreferrer" } : {};
+  const wrapperProps = url ? { href: url, target: "_blank", rel: "noopener noreferrer", onClick: handleClick } : {};
 
   return (
     <RevealStagger delay={delay}>
@@ -55,7 +63,7 @@ export function ExperienceItem({ delay, year, title, role, location, description
             type="underline" 
             trigger="hover" 
             loops={2}
-            isActive={isHovered} 
+            isActive={isHovered || isClicked} 
             className="block text-2xl md:text-3xl lg:text-4xl mb-1 md:mb-2 relative w-max"
             scribbleClassName="absolute -bottom-1 -left-2 w-[calc(100%+16px)] h-3 text-brand"
           >

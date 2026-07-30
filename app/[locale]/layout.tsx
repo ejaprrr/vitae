@@ -27,15 +27,38 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: 'seo' });
 
   return {
-    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
+    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://www.eliasjp.cz"),
     title: t('title'),
     description: t('description'),
+    alternates: {
+      canonical: `/${locale}`,
+      languages: {
+        cs: '/cs',
+        en: '/en',
+      },
+    },
     openGraph: {
       title: t('openGraph.title'),
       description: t('openGraph.description'),
       type: "website",
+      siteName: "eliáš jan procházka",
       locale: locale === 'cs' ? 'cs_CZ' : 'en_US',
-    }
+      url: `https://www.eliasjp.cz/${locale}`,
+      images: [
+        {
+          url: "/opengraph-image.png",
+          width: 1200,
+          height: 630,
+          alt: t('openGraph.title'),
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t('openGraph.title'),
+      description: t('openGraph.description'),
+      images: ["/opengraph-image.png"],
+    },
   };
 }
 

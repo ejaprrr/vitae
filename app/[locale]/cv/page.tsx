@@ -67,17 +67,39 @@ export default async function CVPage({ params }: { params: Promise<{ locale: str
                 {t('contact.title')}
                 <Scribble type="underline" trigger="static" className="absolute -bottom-2 left-0 w-full h-3 text-brand -z-10" />
               </h2>
-              <div className="flex flex-col gap-2 print:gap-1 text-base print:text-[14px] lowercase print:leading-relaxed">
-                <span className="font-medium text-black">plzeň, cz</span>
-                <a href={`mailto:${t('global.email')}`} className="hover:text-brand transition-colors font-medium">
-                  {t('global.email')}
-                </a>
-                <a href={siteConfig.social.find(s => s.label === 'github')?.href} target="_blank" rel="noopener noreferrer" className="hover:text-brand transition-colors flex items-center gap-1">
-                  github/ejaprrr <span className="text-black/50 text-sm print:text-[12px]">({t('contact.projectsNote')})</span>
-                </a>
-                <a href={siteConfig.social.find(s => s.label === 'linkedin')?.href} target="_blank" rel="noopener noreferrer" className="hover:text-brand transition-colors">
-                  linkedin/ejaprrr
-                </a>
+              <div className="flex flex-col gap-2.5 print:gap-1.5 text-base print:text-[14px] lowercase">
+                <span className="font-medium text-black">{siteConfig.location}</span>
+
+                <div className="flex flex-col gap-1 print:gap-0.5">
+                  <a href={siteConfig.url} target="_blank" rel="noopener noreferrer" className="hover:text-brand transition-colors font-medium text-black">
+                    {siteConfig.domain}
+                  </a>
+                  <a href={`mailto:${t('global.email')}`} className="hover:text-brand transition-colors text-black/80">
+                    {t('global.email')}
+                  </a>
+                </div>
+
+                <div className="flex items-center gap-2 text-black/70 text-sm print:text-[13px] pt-1 print:pt-0.5 flex-wrap">
+                  {(() => {
+                    const gh = siteConfig.social.find(s => s.label === 'github');
+                    const li = siteConfig.social.find(s => s.label === 'linkedin');
+                    return (
+                      <>
+                        {gh && (
+                          <a href={gh.href} target="_blank" rel="noopener noreferrer" className="hover:text-brand transition-colors">
+                            {gh.label}/{gh.handle}
+                          </a>
+                        )}
+                        {gh && li && <span className="text-black/30">/</span>}
+                        {li && (
+                          <a href={li.href} target="_blank" rel="noopener noreferrer" className="hover:text-brand transition-colors">
+                            {li.label}/{li.handle}
+                          </a>
+                        )}
+                      </>
+                    );
+                  })()}
+                </div>
               </div>
             </section>
 
@@ -117,7 +139,7 @@ export default async function CVPage({ params }: { params: Promise<{ locale: str
                 <Scribble type="underline" trigger="static" loops={2} className="absolute -bottom-2 left-0 w-[calc(100%+16px)] h-4 text-brand -z-10" />
               </h1>
               <div className="text-xl print:text-lg text-brand font-medium lowercase mt-2 print:mt-1">
-                {siteConfig.roles.join(' • ')}
+                {siteConfig.roles.join(' / ')}
               </div>
             </header>
 
@@ -185,7 +207,7 @@ export default async function CVPage({ params }: { params: Promise<{ locale: str
                     <h3 className="text-xl print:text-lg font-medium flex items-center gap-2 flex-wrap">
                       {edu.title.split('<br></br>').map((part, partIdx) => (
                         <span key={partIdx} className="flex items-center gap-2">
-                          {partIdx > 0 && <span className="text-brand">•</span>}
+                          {partIdx > 0 && <span className="text-brand">/</span>}
                           {part.includes('<highlight>') ? (
                             <span className="relative inline-block z-10 text-brand font-medium">
                               {part.replace('<highlight>', '').replace('</highlight>', '')}
