@@ -4,6 +4,7 @@ import { AnimatedLink } from "@/components/ui/AnimatedLink";
 import { Container } from "@/components/layout/Container";
 import { useTranslations } from 'next-intl';
 import { LanguageSwitcher } from "@/components/ui/LanguageSwitcher";
+import { siteConfig } from "@/config/site";
 import { useState, useEffect } from "react";
 import { m, AnimatePresence } from "framer-motion";
 
@@ -15,11 +16,17 @@ export function Navbar() {
 
   useEffect(() => {
     if (isMenuOpen) {
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
       document.body.style.overflow = 'hidden';
     } else {
+      document.body.style.paddingRight = '';
       document.body.style.overflow = 'unset';
     }
-    return () => { document.body.style.overflow = 'unset'; };
+    return () => { 
+      document.body.style.paddingRight = '';
+      document.body.style.overflow = 'unset'; 
+    };
   }, [isMenuOpen]);
 
   return (
@@ -39,7 +46,7 @@ export function Navbar() {
             <div className="flex-1 flex justify-center">
               <button 
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-sm md:text-base font-medium tracking-wider lowercase hover:text-brand transition-colors"
+                className="text-sm md:text-base font-medium tracking-wider lowercase hover:text-brand transition-colors cursor-pointer"
               >
                 {isMenuOpen ? (t('global.close') || 'zavrit') : 'menu'}
               </button>
@@ -90,6 +97,27 @@ export function Navbar() {
                 </m.div>
               ))}
             </div>
+
+            {/* sekce dalsich moznosti (CV, socials) */}
+            <m.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 10, transition: { duration: 0.3 } }}
+              transition={{ delay: 0.35, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="absolute bottom-10 sm:bottom-16 w-full px-6 flex flex-wrap justify-center gap-6 sm:gap-10 text-sm sm:text-base font-medium lowercase"
+            >
+              <AnimatedLink href="/cv" type="underline" onClick={() => setTimeout(() => setIsMenuOpen(false), 400)}>
+                životopis (cv)
+              </AnimatedLink>
+              {siteConfig.social.map((link, i) => (
+                <AnimatedLink key={i} href={link.href} type="underline" external>
+                  {link.label}
+                </AnimatedLink>
+              ))}
+              <AnimatedLink href={`mailto:${t('global.email')}`} type="underline" external>
+                email
+              </AnimatedLink>
+            </m.div>
           </m.div>
         )}
       </AnimatePresence>

@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { Scribble } from "@/components/scribbles";
+import { Scribble } from "@/components/ui/Scribble";
 import { useGraceNavigation } from "@/hooks/useGraceNavigation";
 
 interface AnimatedLinkProps {

@@ -1,10 +1,10 @@
-import { useTranslations } from 'next-intl';
+
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import { siteConfig } from '@/config/site';
-import { Scribble } from '@/components/scribbles';
-import { PrintController } from '@/components/cv/PrintController';
-import { Button } from '@/components/ui/Button';
+import { Scribble } from '@/components/ui/Scribble';
+import { PrintController } from '@/components/ui/PrintController';
+
 import { Metadata } from 'next';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -57,7 +57,7 @@ export default async function CVPage({ params }: { params: Promise<{ locale: str
 
             <div className="relative inline-block self-start z-10 print-break-inside-avoid">
               <div className="relative w-32 h-40 md:w-36 md:h-48 print:w-[32mm] print:h-[40mm] overflow-hidden grayscale contrast-125">
-                <Image src="/portrait.jpg" alt={t('global.name')} fill className="object-cover" />
+                <Image src="/portrait.jpg" alt={t('global.name')} fill sizes="(max-width: 768px) 128px, 144px" className="object-cover" />
               </div>
               <Scribble type="circle" trigger="static" loops={3} className="absolute -inset-2 text-brand z-20 pointer-events-none" />
             </div>
@@ -84,7 +84,7 @@ export default async function CVPage({ params }: { params: Promise<{ locale: str
             <section className="flex flex-col gap-6 print:gap-5 lowercase">
               {siteConfig.skills.map((skillGroup, i) => {
                 const categoryKey = Object.keys(t.raw('skills.categories'))[i];
-                const categoryName = t(`skills.categories.${categoryKey}` as any);
+                const categoryName = t(`skills.categories.${categoryKey}` as Parameters<typeof t>[0]);
                 return (
                   <div key={i} className="print-break-inside-avoid flex flex-col">
                     {i === 0 && (

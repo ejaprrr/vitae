@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { Scribble } from "@/components/scribbles";
+import { Scribble } from "@/components/ui/Scribble";
 import { RevealStagger } from "@/components/ui/Reveal";
-import { useTranslations } from "next-intl";
+
 
 interface ExperienceItemProps {
   year: string;
@@ -17,7 +17,7 @@ interface ExperienceItemProps {
 
 export function ExperienceItem({ delay, year, title, role, location, description, url }: ExperienceItemProps) {
   const [isHovered, setIsHovered] = useState(false);
-  const t = useTranslations();
+
 
   const Wrapper = url ? "a" : "div";
   const wrapperProps = url ? { href: url, target: "_blank", rel: "noopener noreferrer" } : {};

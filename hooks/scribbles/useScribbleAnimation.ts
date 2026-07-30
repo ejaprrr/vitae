@@ -9,7 +9,7 @@ const customEase: Easing = [0.16, 1, 0.3, 1];
 
 export function useScribbleAnimation(trigger: ScribbleTrigger, isHovered: boolean = false, delay: number = 0, isInView: boolean = false) {
   const isActive = trigger === "hover" ? isHovered : 
-                   (trigger === "scroll" ? isInView : 
+                   (trigger === "scroll" || trigger === "loop" ? isInView : 
                    (trigger === "sequence1" || trigger === "sequence2" ? !isHovered : true));
 
   const [loopKey, setLoopKey] = useState(0);

@@ -3,7 +3,7 @@
 
 import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import { ScribbleType } from "@/types/scribbles";
-import { generateUnderline, generateCircle, generateArrowDirectional } from "@/lib/scribbles/generators";
+import { generateUnderline, generateCircle, generateArrowDirectional, generateStar, generateHeart } from "@/lib/scribbles/generators";
 
 export function useScribblePath(type: ScribbleType | null, loops: number = 2, loopKey: number = 0) {
   const ref = useRef<HTMLElement>(null);
@@ -51,6 +51,8 @@ export function useScribblePath(type: ScribbleType | null, loops: number = 2, lo
     else if (type === "arrowDown") setPath(generateArrowDirectional(dims.w, dims.h, 'down'));
     else if (type === "arrowLeft") setPath(generateArrowDirectional(dims.w, dims.h, 'left'));
     else if (type === "arrowRight") setPath(generateArrowDirectional(dims.w, dims.h, 'right'));
+    else if (type === "star") setPath(generateStar(dims.w, dims.h, loops));
+    else if (type === "heart") setPath(generateHeart(dims.w, dims.h, loops));
   }, [dims.w, dims.h, type, loops, loopKey]);
 
   return { ref, dims, path };

@@ -1,5 +1,5 @@
 import { Reveal } from "@/components/ui/Reveal";
-import { Scribble } from "@/components/scribbles";
+import { Scribble } from "@/components/ui/Scribble";
 
 interface SectionHeaderProps {
   title: string;

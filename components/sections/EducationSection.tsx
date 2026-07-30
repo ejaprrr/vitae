@@ -1,7 +1,7 @@
 import { siteConfig } from "@/config/site";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { EducationCard } from "@/components/ui/EducationCard";
-import { RevealStagger } from "@/components/ui/Reveal";
+
 import { Container } from "@/components/layout/Container";
 import { useTranslations } from 'next-intl';
 import React from 'react';

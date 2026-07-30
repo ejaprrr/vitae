@@ -1,6 +1,6 @@
 "use client";
 
-import { Scribble } from "@/components/scribbles";
+import { Scribble } from "@/components/ui/Scribble";
 import { useGraceNavigation } from "@/hooks/useGraceNavigation";
 
 interface Skill {

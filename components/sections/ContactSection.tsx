@@ -5,7 +5,7 @@ import { siteConfig } from "@/config/site";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
-import { Scribble } from "@/components/scribbles";
+import { Scribble } from "@/components/ui/Scribble";
 import { Container } from "@/components/layout/Container";
 import { useTranslations } from 'next-intl';
 
@@ -33,7 +33,7 @@ export function ContactSection() {
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >
-              <Button href={`mailto:${t('global.email')}`} theme="light" className="text-lg sm:text-xl md:text-2xl px-8 py-4 md:px-10 md:py-5 relative z-10">
+              <Button href={`mailto:${t('global.email')}`} theme="light" className="relative z-10">
                 {t('contact.cta')}
               </Button>
               <Scribble 

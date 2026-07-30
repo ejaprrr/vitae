@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/Button";
-import { Scribble } from "@/components/scribbles";
+import { Scribble } from "@/components/ui/Scribble";
 import { Reveal } from "@/components/ui/Reveal";
 import { useTranslations } from "next-intl";
 
@@ -28,7 +28,7 @@ export default function NotFound() {
 
         <Reveal delay={0.3}>
           <div className="relative inline-block w-max mt-4">
-            <Button href="/" theme="dark" className="text-base sm:text-lg px-8 py-3 relative z-10">
+            <Button href="/" theme="dark" className="relative z-10">
               {t("back")}
             </Button>
             <Scribble 

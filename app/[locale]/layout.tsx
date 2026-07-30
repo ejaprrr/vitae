@@ -8,7 +8,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import { MotionProvider } from "@/components/providers/MotionProvider";
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
+import { getMessages, getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 
@@ -24,15 +24,15 @@ export async function generateMetadata({
   const { locale } = await params;
   
   // Await getTranslations directly
-  const t = await import(`@/messages/${locale}.json`).then((m) => m.default.seo);
+  const t = await getTranslations({ locale, namespace: 'seo' });
 
   return {
     metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
-    title: t.title,
-    description: t.description,
+    title: t('title'),
+    description: t('description'),
     openGraph: {
-      title: t.openGraph.title,
-      description: t.openGraph.description,
+      title: t('openGraph.title'),
+      description: t('openGraph.description'),
       type: "website",
       locale: locale === 'cs' ? 'cs_CZ' : 'en_US',
     }
@@ -57,6 +57,7 @@ export default async function RootLayout({
     <html
       lang={locale}
       className="h-full antialiased"
+      data-scroll-behavior="smooth"
     >
       <body className={`${font.className} min-h-full flex flex-col`}>
         <NextIntlClientProvider messages={messages}>

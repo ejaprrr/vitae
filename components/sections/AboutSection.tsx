@@ -1,6 +1,6 @@
 import { siteConfig } from "@/config/site";
 import { Reveal, RevealStagger } from "@/components/ui/Reveal";
-import { Scribble } from "@/components/scribbles";
+import { Scribble } from "@/components/ui/Scribble";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Container } from "@/components/layout/Container";
 import { Button } from "@/components/ui/Button";
@@ -25,8 +25,16 @@ export function AboutSection() {
       </Reveal>
 
       {/* Body columns */}
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8">
-        <RevealStagger className="md:col-start-5 md:col-span-4" delay={0.5}>
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 relative">
+        {/* Desktop Scribbles: Column 1 (span 4) */}
+        <div className="hidden md:flex md:col-span-4 justify-center items-center pointer-events-none z-10">
+          <div className="relative w-56 h-56 -mt-8">
+            <Scribble type="star" trigger="loop" loops={3} delay={1.5} className="w-40 h-40 text-brand -rotate-[15deg] absolute top-0 left-2" />
+            <Scribble type="heart" trigger="loop" loops={3} delay={1.8} className="w-24 h-24 text-brand rotate-[20deg] absolute bottom-4 right-4 z-10" />
+          </div>
+        </div>
+
+        <RevealStagger className="md:col-span-4" delay={0.5}>
           <p className="text-body text-gray-500">
             {t.rich('about.paragraphs.0', {
               highlight: (chunks) => <span className="text-black font-medium">{chunks}</span>,
@@ -41,10 +49,17 @@ export function AboutSection() {
               highlightScribble: (chunks) => <span className="relative inline-block z-10 px-1 py-1 -mx-1 -my-1 text-black font-medium">{chunks}<Scribble type="underline" trigger="loop" className="absolute -bottom-1 left-0 w-full h-3 text-brand -z-10" /></span>
             })}
           </p>
-          <div className="flex">
+          <div className="flex items-center w-full">
             <Button href="/cv" theme="dark">
               {t('about.cvButton')}
             </Button>
+            {/* Mobile Scribbles: Centered in remaining space next to CV button */}
+            <div className="md:hidden flex-1 flex justify-center items-center pl-4">
+              <div className="relative w-24 h-24 pointer-events-none z-10">
+                <Scribble type="star" trigger="loop" loops={3} delay={1.5} className="w-16 h-16 text-brand -rotate-[15deg] absolute top-0 left-0" />
+                <Scribble type="heart" trigger="loop" loops={3} delay={1.8} className="w-10 h-10 text-brand rotate-[20deg] absolute bottom-2 right-2 z-10" />
+              </div>
+            </div>
           </div>
         </RevealStagger>
       </div>

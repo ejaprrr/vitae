@@ -29,7 +29,7 @@ export function Scribble({ type, trigger = "hover", loops = 2, className = "", s
         key={loopKey}
         d={path} 
         pathLength="100" 
-        style={{ strokeDasharray: "100 120", willChange: "stroke-dashoffset, opacity" }}
+        style={{ strokeDasharray: "100 150", willChange: "stroke-dashoffset, opacity" }}
         {...motionProps}
       />
     </m.svg>

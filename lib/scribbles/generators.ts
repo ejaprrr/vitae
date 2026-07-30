@@ -119,3 +119,110 @@ export function generateArrowDirectional(w: number, h: number, direction: 'up' |
 
   return `M ${start.x} ${start.y} C ${c1.x} ${c1.y}, ${c2.x} ${c2.y}, ${tip.x} ${tip.y} C ${c3.x} ${c3.y}, ${c4.x} ${c4.y}, ${topFin.x} ${topFin.y} C ${c5.x} ${c5.y}, ${c6.x} ${c6.y}, ${returnTip.x} ${returnTip.y} C ${c7.x} ${c7.y}, ${c8.x} ${c8.y}, ${botFin.x} ${botFin.y}`;
 }
+
+export function generateStar(w: number, h: number, loops: number = 1) {
+  const r = (min: number, max: number) => Math.random() * (max - min) + min;
+  const cx = w / 2;
+  const cy = h / 2;
+  const radius = Math.min(w, h) / 2 * 0.95;
+  
+  let d = '';
+  
+  for (let l = 0; l < loops; l++) {
+    const rotOffset = r(-0.1, 0.1);
+    const points: {x: number, y: number}[] = [];
+    
+    // 5-point pentagram drawn by jumping 2 vertices
+    for (let i = 0; i < 5; i++) {
+      // Step by 2 * (2PI/5) = 144 degrees
+      const angle = -Math.PI / 2 + (i * 2 * Math.PI * 2) / 5 + rotOffset;
+      // Jemnější odchylka poloměru
+      const currentRadius = radius + r(-radius * 0.1, radius * 0.1);
+      
+      const varX = r(-w*0.05, w*0.05);
+      const varY = r(-h*0.05, h*0.05);
+      points.push({
+        x: cx + Math.cos(angle) * currentRadius + varX,
+        y: cy + Math.sin(angle) * currentRadius + varY
+      });
+    }
+    
+    if (l === 0) {
+      d += `M ${points[0].x} ${points[0].y}`;
+    } else {
+      // Volnější napojení mezi smyčkami, ale s mírou
+      const c1x = cx + r(-w*0.15, w*0.15);
+      const c1y = cy + r(-h*0.15, h*0.15);
+      d += ` Q ${c1x} ${c1y} ${points[0].x} ${points[0].y}`;
+    }
+    
+    for (let i = 1; i <= 5; i++) {
+      const p = points[i % 5];
+      const prev = points[i - 1];
+      // Větší chaos u čar spojujících cípy, ale drží tvar
+      const c1x = prev.x + (p.x - prev.x) * 0.5 + r(-w*0.08, w*0.08);
+      const c1y = prev.y + (p.y - prev.y) * 0.5 + r(-h*0.08, h*0.08);
+      d += ` Q ${c1x} ${c1y} ${p.x} ${p.y}`;
+    }
+  }
+  return d;
+}
+
+export function generateHeart(w: number, h: number, loops: number = 1) {
+  const r = (min: number, max: number) => Math.random() * (max - min) + min;
+  let d = '';
+  
+  let currentCleft = { 
+    x: w * 0.5 + r(-w*0.05, w*0.05),
+    y: h * 0.2 + r(-h*0.1, h*0.1) 
+  };
+  
+  for (let l = 0; l < loops; l++) {
+    // Velká asymetrie laloků (šišatost)
+    const rightLobeTop = { x: w * 0.9 + r(-w*0.1, w*0.15), y: h * 0.05 + r(-h*0.15, h*0.2) };
+    const rightEdge = { x: w * 0.95 + r(-w*0.1, w*0.05), y: h * 0.4 + r(-h*0.1, h*0.1) };
+    
+    // Protažená špička na jedné straně (overshoot)
+    const bottomTipRight = { 
+      x: w * 0.5 + r(-w*0.1, w*0.15), 
+      y: h * 0.9 + r(0, h*0.2) // Spodek často přetáhne dolů
+    };
+    
+    // Druhá půlka začíná mírně vedle, čímž vznikne překřížení tahů na špičce
+    const bottomTipLeft = {
+      x: bottomTipRight.x + r(-w*0.15, w*0.05),
+      y: bottomTipRight.y + r(-h*0.1, h*0.05)
+    };
+    
+    const leftEdge = { x: w * 0.05 + r(-w*0.05, w*0.1), y: h * 0.4 + r(-h*0.1, h*0.1) };
+    const leftLobeTop = { x: w * 0.1 + r(-w*0.15, w*0.1), y: h * 0.05 + r(-h*0.15, h*0.2) };
+    
+    // Konec tahu se nemusí trefit přesně do výchozího bodu
+    const endCleft = {
+      x: currentCleft.x + r(-w*0.15, w*0.15),
+      y: currentCleft.y + r(-h*0.1, h*0.15)
+    };
+    
+    if (l === 0) {
+      d += `M ${currentCleft.x} ${currentCleft.y}`;
+    } else {
+      // Volné navázání dalšího tahu
+      d += ` Q ${w*0.5 + r(-w*0.1, w*0.1)} ${h*0.5} ${currentCleft.x} ${currentCleft.y}`;
+    }
+    
+    // Pravá půlka dolů
+    d += ` C ${rightLobeTop.x} ${currentCleft.y - h*0.2}, ${rightEdge.x} ${rightLobeTop.y}, ${rightEdge.x} ${rightEdge.y}`;
+    d += ` C ${rightEdge.x} ${h*0.7}, ${w*0.7} ${h*0.8}, ${bottomTipRight.x} ${bottomTipRight.y}`;
+    
+    // Ostrý zlom na špičce (překřížení tahu)
+    d += ` L ${bottomTipLeft.x} ${bottomTipLeft.y}`;
+    
+    // Levá půlka nahoru
+    d += ` C ${w*0.3} ${h*0.8}, ${leftEdge.x} ${h*0.7}, ${leftEdge.x} ${leftEdge.y}`;
+    d += ` C ${leftEdge.x} ${leftLobeTop.y}, ${leftLobeTop.x} ${endCleft.y - h*0.2}, ${endCleft.x} ${endCleft.y}`;
+    
+    currentCleft = endCleft;
+  }
+  
+  return d;
+}

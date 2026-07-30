@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from '@/i18n/routing';
 import { useTranslations } from 'next-intl';
-import { Scribble } from '@/components/scribbles';
+import { Scribble } from '@/components/ui/Scribble';
 
 export function PrintController() {
   const router = useRouter();
@@ -50,7 +50,7 @@ export function PrintController() {
 
   return (
     <div className="fixed inset-0 bg-white z-[9999] flex flex-col items-center justify-center print:hidden">
-      <div className="relative inline-block px-4 py-2">
+      <div className="relative inline-block px-8 py-4 md:px-10 md:py-5">
         <span className="relative z-10 text-xl md:text-2xl font-medium tracking-tight lowercase text-black">
           {t('preparing')}
         </span>
@@ -59,10 +59,10 @@ export function PrintController() {
       
       {/* zachranna brzda pro pripad, ze ios safari tisk potichu zablokuje */}
       <div className={`mt-12 flex items-center gap-6 transition-opacity duration-500 ${showFallback ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-        <button onClick={() => window.print()} className="text-black/60 hover:text-brand font-medium lowercase transition-colors">
+        <button onClick={() => window.print()} className="text-black/60 hover:text-brand font-medium lowercase transition-colors cursor-pointer">
           zkusit znovu
         </button>
-        <button onClick={() => router.push('/')} className="text-black/60 hover:text-black font-medium lowercase transition-colors">
+        <button onClick={() => router.push('/')} className="text-black/60 hover:text-black font-medium lowercase transition-colors cursor-pointer">
           zpět na web
         </button>
       </div>

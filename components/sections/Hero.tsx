@@ -50,15 +50,27 @@ export function Hero() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            dangerouslySetInnerHTML={{ __html: t('global.name').replace(/ /g, "<br />") }}
-          />
+          >
+            {t('global.name').split(' ').map((word, i, arr) => (
+              <span key={i}>
+                {word}
+                {i < arr.length - 1 && <br />}
+              </span>
+            ))}
+          </m.div>
           <m.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="text-right"
-            dangerouslySetInnerHTML={{ __html: (t.raw('global.roles') as string[]).join("<br />") }}
-          />
+          >
+            {(t.raw('global.roles') as string[]).map((role, i, arr) => (
+              <span key={i}>
+                {role}
+                {i < arr.length - 1 && <br />}
+              </span>
+            ))}
+          </m.div>
         </div>
 
         {/* Floating CTA */}

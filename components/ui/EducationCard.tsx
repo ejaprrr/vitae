@@ -1,9 +1,9 @@
 "use client";
 
-import { Scribble } from "@/components/scribbles";
+import { Scribble } from "@/components/ui/Scribble";
 import { RevealStagger } from "@/components/ui/Reveal";
 import { useGraceNavigation } from "@/hooks/useGraceNavigation";
-import { useTranslations } from "next-intl";
+
 
 interface EducationCardProps {
   year: string;
@@ -16,7 +16,7 @@ interface EducationCardProps {
 export function EducationCard({ year, title, description, url, delay = 0 }: EducationCardProps) {
   const isLink = !!url;
   const { navigateWithGrace } = useGraceNavigation();
-  const t = useTranslations();
+
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (!isLink || !url) return;
