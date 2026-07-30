@@ -45,6 +45,11 @@ export function Scribble({ type, trigger = "hover", loops = 2, className = "", s
         onMouseLeave={() => setIsHovered(false)}
         onTouchStart={() => setIsHovered(true)}
         onTouchEnd={() => setTimeout(() => setIsHovered(false), 300)}
+        onTouchCancel={() => setIsHovered(false)}
+        onClick={(e: React.MouseEvent<HTMLElement>) => {
+          setIsHovered(false);
+          if (rest.onClick) rest.onClick(e);
+        }}
         {...rest}
       >
         {children}

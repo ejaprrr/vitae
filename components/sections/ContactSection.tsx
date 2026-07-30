@@ -7,29 +7,34 @@ import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { Scribble } from "@/components/scribbles";
 import { Container } from "@/components/layout/Container";
+import { useTranslations } from 'next-intl';
 
 export function ContactSection() {
   const [isHovered, setIsHovered] = useState(false);
+  const t = useTranslations();
 
   return (
     <section className="w-full bg-black text-white">
-      <Container className="pt-24 sm:pt-32 md:pt-48 pb-24 sm:pb-32">
+      <Container className="py-24 sm:py-32 md:py-48">
         <div id="contact" className="scroll-mt-16 md:scroll-mt-20" />
-        <SectionHeader title={siteConfig.sections.contact.title} number={siteConfig.sections.contact.number} theme="dark" />
+        <SectionHeader title={t('contact.title')} number={siteConfig.sections.contact.number} theme="dark" />
 
         {/* Main Content */}
         <Reveal delay={0.15}>
           <div className="flex flex-col lg:flex-row justify-between lg:items-end gap-12 lg:gap-16">
             <p className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[8rem] leading-[1.05] lowercase tracking-tight">
-              {siteConfig.contact.heading}
+              {t.rich('contact.heading', { 
+                br: () => <br />, 
+                highlight: (chunks) => <span className="text-brand">{chunks}</span> 
+              })}
             </p>
             <div 
               className="mb-2 lg:mb-6 w-max relative z-10 mt-8 md:mt-0"
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >
-              <Button href={`mailto:${siteConfig.email}`} theme="light" className="text-lg sm:text-xl md:text-2xl px-8 py-4 md:px-10 md:py-5 relative z-10">
-                {siteConfig.email}
+              <Button href={`mailto:${t('global.email')}`} theme="light" className="text-lg sm:text-xl md:text-2xl px-8 py-4 md:px-10 md:py-5 relative z-10">
+                {t('contact.cta')}
               </Button>
               <Scribble 
                 type="circle"

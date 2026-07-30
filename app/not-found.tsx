@@ -1,46 +1,17 @@
-import { Button } from "@/components/ui/Button";
-import { Scribble } from "@/components/scribbles";
-import { Reveal } from "@/components/ui/Reveal";
+import { routing } from '@/i18n/routing';
 
-export default function NotFound() {
+export default function GlobalNotFound() {
   return (
-    <div className="w-full h-[100dvh] flex flex-col relative overflow-hidden">
-      <main className="flex-1 flex flex-col justify-center items-center px-5 sm:px-8 text-center">
-        <Reveal delay={0.1}>
-          <h1 className="relative inline-block text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[8rem] leading-[1.05] lowercase tracking-tight mb-8 sm:mb-12 z-10">
-            404
-            <Scribble 
-              type="underline" 
-              trigger="static" 
-              className="absolute -bottom-2 sm:-bottom-4 left-0 w-full h-4 sm:h-6 text-brand -z-10" 
-            />
-          </h1>
-        </Reveal>
-        
-        <Reveal delay={0.2}>
-          <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-[1.3] lowercase mb-16 sm:mb-20 max-w-[800px] mx-auto">
-            tady nic není. buď se stránka přesunula, nebo nikdy neexistovala.
-          </p>
-        </Reveal>
-
-        <Reveal delay={0.3}>
-          <div className="relative inline-block w-max mt-4">
-            <Button href="/" theme="dark" className="text-base sm:text-lg px-8 py-3 relative z-10">
-              zpět na hlavní stranu
-            </Button>
-            <Scribble 
-              type="circle"
-              trigger="static"
-              className="absolute -inset-2 md:-inset-3 text-brand z-20 pointer-events-none"
-            />
-            <Scribble 
-              type="arrowUp"
-              trigger="static"
-              className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-12 h-16 text-brand pointer-events-none"
-            />
-          </div>
-        </Reveal>
-      </main>
-    </div>
+    <html lang={routing.defaultLocale}>
+      <body style={{ margin: 0, padding: 0, fontFamily: 'system-ui, sans-serif' }}>
+        <div style={{ width: '100vw', height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+          <h1 style={{ fontSize: '4rem', margin: '0 0 1rem 0' }}>404</h1>
+          <p style={{ fontSize: '1.5rem', margin: '0 0 2rem 0' }}>tady nic není.</p>
+          <a href="/" style={{ padding: '1rem 2rem', background: '#000', color: '#fff', textDecoration: 'none', borderRadius: '4px' }}>
+            zpět na hlavní stranu
+          </a>
+        </div>
+      </body>
+    </html>
   );
 }

@@ -1,4 +1,7 @@
+"use client";
+
 import { Scribble } from "@/components/scribbles";
+import { useGraceNavigation } from "@/hooks/useGraceNavigation";
 
 interface Skill {
   name: string;
@@ -11,6 +14,12 @@ interface SkillBlockProps {
 }
 
 export function SkillBlock({ category, skills }: SkillBlockProps) {
+  const { navigateWithGrace, navigatingTo } = useGraceNavigation();
+
+  const handleSkillClick = (e: React.MouseEvent<HTMLAnchorElement>, url: string) => {
+    navigateWithGrace(e, url, true); // external link
+  };
+
   return (
     <div className="flex flex-col gap-4 md:gap-6">
       <span className="text-brand text-base md:text-lg">{category}</span>
@@ -20,12 +29,14 @@ export function SkillBlock({ category, skills }: SkillBlockProps) {
             key={skill.name}
             as="a"
             href={skill.url}
+            onClick={(e: React.MouseEvent<HTMLAnchorElement>) => handleSkillClick(e, skill.url)}
             target="_blank"
             rel="noopener noreferrer"
             type="underline" 
             trigger="hover" 
+            {...(navigatingTo === skill.url ? { isActive: true } : {})}
             className="block text-3xl xl:text-4xl leading-[1.1] lowercase tracking-tight transition-colors cursor-pointer px-2 -mx-2 relative w-max hover:text-black focus:outline-none"
-            scribbleClassName="absolute -bottom-1 left-0 w-full h-4 text-brand" 
+            scribbleClassName="absolute -bottom-1 left-0 w-full h-4 text-brand pointer-events-none" 
           >
             {skill.name}
           </Scribble>

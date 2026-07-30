@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { Scribble } from "@/components/scribbles";
+import { useGraceNavigation } from "@/hooks/useGraceNavigation";
 
 interface AnimatedLinkProps {
   href: string;
@@ -12,6 +13,7 @@ interface AnimatedLinkProps {
   type?: "underline" | "circle";
   onClick?: () => void;
   external?: boolean;
+  loops?: number;
 }
 
 export function AnimatedLink({ 
@@ -21,19 +23,15 @@ export function AnimatedLink({
   disableAnimation = false, 
   type = "underline", 
   onClick,
-  external = false
+  external = false,
+  loops = 1
 }: AnimatedLinkProps) {
+  const { navigateWithGrace, navigatingTo } = useGraceNavigation();
+  const isClicked = navigatingTo === href;
+
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     onClick?.();
-    
-    // Smooth scroll for internal links
-    if (!external && href.startsWith('#')) {
-      e.preventDefault();
-      const target = document.querySelector(href);
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
+    navigateWithGrace(e, href, external);
   };
 
   if (disableAnimation) {
@@ -61,7 +59,9 @@ export function AnimatedLink({
       className={`relative group inline-block ${className}`}
       type={type}
       trigger="hover"
-      scribbleClassName={type === "underline" ? `absolute left-0 w-full text-brand ${external ? "-bottom-1 h-3" : "-bottom-2 h-4"}` : "absolute inset-0 text-brand"}
+      loops={loops}
+      {...(isClicked ? { isActive: true } : {})}
+      scribbleClassName={type === "underline" ? `absolute left-0 w-full text-brand ${external ? "-bottom-1 h-3" : "-bottom-2 h-4"}` : "absolute inset-0 text-brand scale-[1.35]"}
     >
       <span className="relative z-10 transition-colors duration-300 group-hover:text-black">
         {children}

@@ -21,7 +21,7 @@ export function useScribbleAnimation(trigger: ScribbleTrigger, isHovered: boolea
     const justDeactivated = !isActive && wasActive.current;
     const fullyRetracted = Date.now() - lastInactiveTime.current > 350;
 
-    if (trigger === "hover") {
+    if (trigger === "hover" || trigger === "scroll") {
       if (justActivated && fullyRetracted) {
         setLoopKey(k => k + 1);
       }
@@ -42,7 +42,12 @@ export function useScribbleAnimation(trigger: ScribbleTrigger, isHovered: boolea
       return {
         initial: { strokeDashoffset: 120, opacity: 0 },
         animate: { strokeDashoffset: isActive ? 0 : 120, opacity: isActive ? 1 : 0 },
-        transition: { duration: 1.5, ease: "easeInOut" as Easing, delay }
+        transition: { 
+          duration: isActive ? 0.3 : 0.4, 
+          ease: (isActive ? "easeOut" : "easeIn") as Easing, 
+          delay: isActive ? delay : 0,
+          opacity: { duration: isActive ? 0 : 0.4, ease: (isActive ? "linear" : "easeIn") as Easing }
+        }
       };
     }
     
@@ -62,7 +67,7 @@ export function useScribbleAnimation(trigger: ScribbleTrigger, isHovered: boolea
       if (trigger === "sequence1") {
         return {
           initial: { strokeDashoffset: 120, opacity: 0 },
-          animate: { strokeDashoffset: [120, 0, 0, 120], opacity: [0, 1, 1, 0] },
+          animate: { strokeDashoffset: [120, 0, 0, 120], opacity: [1, 1, 1, 0] },
           transition: {
             duration: 7,
             times: [0, 0.15, 0.85, 1],
@@ -75,7 +80,7 @@ export function useScribbleAnimation(trigger: ScribbleTrigger, isHovered: boolea
         // sequence2
         return {
           initial: { strokeDashoffset: 120, opacity: 0 },
-          animate: { strokeDashoffset: [120, 0, 0, 120], opacity: [0, 1, 1, 0] },
+          animate: { strokeDashoffset: [120, 0, 0, 120], opacity: [1, 1, 1, 0] },
           transition: {
             duration: 4.9,
             times: [0, 0.2, 0.8, 1],
@@ -119,7 +124,7 @@ export function useScribbleAnimation(trigger: ScribbleTrigger, isHovered: boolea
       transition: {
         duration: isActive ? 0.3 : 0.4,
         ease: (isActive ? "easeOut" : "easeIn") as Easing,
-        opacity: { duration: isActive ? 0.05 : 0.4, ease: (isActive ? "linear" : "easeIn") as Easing },
+        opacity: { duration: isActive ? 0 : 0.4, ease: (isActive ? "linear" : "easeIn") as Easing },
         delay: trigger === "static" ? delay : 0
       }
     };

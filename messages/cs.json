@@ -1,0 +1,105 @@
+{
+  "global": {
+    "name": "eliáš jan procházka",
+    "shortName": "ejp",
+    "openLink": "otevřít odkaz",
+    "email": "e.japrrr@gmail.com",
+    "roles": ["vývojář", "designer", "analytik"],
+    "close": "zavřít"
+  },
+  "seo": {
+    "title": "eliáš jan procházka | vývojář, designer, analytik",
+    "description": "softwarový vývojář, designer a datový analytik. stavím digitální produkty pomocí čistého kódu a promyšleného designu.",
+    "openGraph": {
+      "title": "eliáš jan procházka | vývojář, designer, analytik",
+      "description": "softwarový vývojář, designer a datový analytik. stavím digitální produkty pomocí čistého kódu a promyšleného designu."
+    }
+  },
+  "nav": {
+    "about": "o mně",
+    "experience": "zkušenosti",
+    "skills": "dovednosti",
+    "education": "vzdělání",
+    "contact": "kontakt"
+  },
+  "about": {
+    "title": "o mně",
+    "statement": "stavím spolehlivé digitální produkty. čistý kód, <highlight1>strukturovaná data</highlight1> a design, který <highlight2>dává smysl.</highlight2>",
+    "paragraphs": [
+      "<highlight>studuji informatiku a datovou analytiku.</highlight> zaměřuji se primárně na vývoj a architekturu. stabilní kód je ale podle mě jen část úspěchu. proto řeším i <highlightScribble>uživatelské rozhraní a design.</highlightScribble> dobrý design totiž určuje, jestli lidé budou aplikaci vůbec používat.",
+      "hledám prostředí, kde se klade důraz na <highlight>kvalitu kódu a týmovou spolupráci.</highlight> dokážu propojit technickou stránku věci s <highlightScribble>pohledem běžného uživatele.</highlightScribble> momentálně hledám full-time pozici v mezinárodním týmu, kde se můžu dál posouvat."
+    ],
+    "cvButton": "stáhnout cv",
+    "cvProfile": "<highlight>vývojář, designér a datový analytik.</highlight> rád se učím nové věci a rychle se adaptuji v týmu. spojuji čistý kód a spolehlivá data s promyšleným designem. aktuálně hledám stálé místo v mezinárodním prostředí."
+  },
+  "experience": {
+    "title": "zkušenosti",
+    "items": [
+      {
+        "year": "jaro 2026",
+        "title": "alboránplus",
+        "role": "frontend developer",
+        "location": "málaga, es<br></br>erasmus+",
+        "description": "vyvíjel jsem webové aplikace a interaktivní komponenty pomocí <highlight>reactu, typescriptu a tailwindu</highlight>. v rámci mezinárodního týmu jsem se úzce podílel na dodávání nových funkcí.",
+        "url": "https://github.com/ejaprrr/chinvat"
+      },
+      {
+        "year": "2023 – 2025",
+        "title": "voš a spše plzeň",
+        "role": "redaktor, creative director",
+        "location": "plzeň, cz<br></br>part time",
+        "description": "řídil jsem <highlight>vizuální identitu</highlight> školy napříč sociálními sítěmi. měl jsem na starosti kompletní tvorbu obsahu – od střihu videí a copywritingu až po budování komunity.",
+        "url": "https://www.instagram.com/vos_a_spse_plzen/"
+      }
+    ]
+  },
+  "skills": {
+    "title": "technologie a nástroje",
+    "moreText": "a pár dalších...",
+    "categories": {
+      "programming": "programování",
+      "web": "web & frameworky",
+      "database": "databáze & nástroje",
+      "design": "design & produkce"
+    }
+  },
+  "error": {
+    "title": "tady nic není. buď se stránka přesunula, nebo nikdy neexistovala.",
+    "back": "zpět na hlavní stranu"
+  },
+  "education": {
+    "title": "vzdělání a úspěchy",
+    "items": [
+      {
+        "year": "2023 – 2027",
+        "title": "voš a spše plzeň",
+        "description": "obor informační technologie, specializace na datovou analytiku.",
+        "url": "https://www.spseplzen.cz"
+      },
+      {
+        "year": "2025",
+        "title": "aimtec hackathon<br></br><highlight>3. místo</highlight>",
+        "description": "intenzivní týmová práce s tvrdým deadlinem. navrhli a postavili jsme reálnou aplikaci, která si odnesla třetí místo.",
+        "url": "https://www.aimtecglobal.com/tiskove-zpravy/vysledky-aimtechackathonu-2025-nejlepsi-projekty-pomohou-autistickym-detem-a-lekarum"
+      },
+      {
+        "year": "2025",
+        "title": "cambridge<br></br><highlight>c1 advanced</highlight>",
+        "description": "dosaženo 194 bodů. angličtinu používám naprosto přirozeně, ať už při čtení technické dokumentace nebo v komunikaci se zahraničním týmem.",
+        "url": "https://www.cambridgeenglish.org/exams-and-tests/advanced/"
+      }
+    ]
+  },
+  "contact": {
+    "title": "kontakt",
+    "projectsNote": "projekty",
+    "heading": "hledáte nového člena<br></br><highlight>do týmu?</highlight>",
+    "cta": "napsat zprávu"
+  },
+  "cv": {
+    "preparing": "připravuji dokument..."
+  },
+  "footer": {
+    "socialTitle": "sociální sítě"
+  }
+}

@@ -1,10 +1,8 @@
-/* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 
 import { m, MotionConfig } from "framer-motion";
-import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
-
+import { useState } from "react";
+import { useGraceNavigation } from "@/hooks/useGraceNavigation";
 import { siteConfig } from "@/config/site";
 
 interface ButtonProps {
@@ -12,17 +10,13 @@ interface ButtonProps {
   children?: React.ReactNode;
   theme?: "dark" | "light";
   className?: string;
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
 }
 
-export function Button({ href = "#contact", children = siteConfig.contact.cta, theme = "dark", className = "" }: ButtonProps) {
-  const router = useRouter();
+export function Button({ href, children = "click me", theme = "dark", className = "", onClick }: ButtonProps) {
   const [hoverAngle, setHoverAngle] = useState(-3);
-  const [isTouchDevice, setIsTouchDevice] = useState(false);
-  const [isClicked, setIsClicked] = useState(false);
-
-  useEffect(() => {
-    setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0);
-  }, []);
+  const { navigateWithGrace, isTouchDevice, navigatingTo } = useGraceNavigation();
+  const isClicked = navigatingTo === href;
 
   // Randomize angle on desktop hover
   const handleHoverStart = () => {
@@ -38,32 +32,13 @@ export function Button({ href = "#contact", children = siteConfig.contact.cta, t
     setHoverAngle(sign * (Math.random() * 4 + 2));
   };
 
-  // Intercept the click to hold the visual state before navigating
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (isTouchDevice) {
-      e.preventDefault();
-      setIsClicked(true);
-      setTimeout(() => {
-        setIsClicked(false);
-        if (href.startsWith('#')) {
-          const target = document.querySelector(href);
-          if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
-          } else {
-            router.push(href);
-          }
-        } else {
-          router.push(href);
-        }
-      }, 400); // 400ms visual grace period
-    } else {
-      if (href.startsWith('#')) {
-        e.preventDefault();
-        const target = document.querySelector(href);
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth' });
-        }
-      }
+    if (onClick) {
+      onClick(e);
+      return;
+    }
+    if (href) {
+      navigateWithGrace(e, href);
     }
   };
 

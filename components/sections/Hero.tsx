@@ -1,5 +1,4 @@
 "use client";
-import { siteConfig } from "@/config/site";
 
 import Image from "next/image";
 import bkgEyes from "@/public/bkg-eyes.jpg";
@@ -7,7 +6,11 @@ import { Button } from "@/components/ui/Button";
 import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 import { m } from "framer-motion";
 
+import { useTranslations } from 'next-intl';
+
 export function Hero() {
+  const t = useTranslations();
+  
   return (
     <div className="w-full h-[100dvh] flex flex-col justify-center relative">
       {/* Hero Strip Section */}
@@ -47,14 +50,14 @@ export function Hero() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            dangerouslySetInnerHTML={{ __html: siteConfig.name.replace(/ /g, "<br />") }}
+            dangerouslySetInnerHTML={{ __html: t('global.name').replace(/ /g, "<br />") }}
           />
           <m.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="text-right"
-            dangerouslySetInnerHTML={{ __html: siteConfig.roles.join("<br />") }}
+            dangerouslySetInnerHTML={{ __html: (t.raw('global.roles') as string[]).join("<br />") }}
           />
         </div>
 
@@ -65,7 +68,7 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-30 w-max"
         >
-          <Button />
+          <Button href="#contact">{t('contact.cta')}</Button>
         </m.div>
       </div>
 
