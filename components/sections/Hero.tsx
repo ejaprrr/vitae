@@ -39,7 +39,10 @@ export function Hero() {
       `}</style>
 
       {/* Hero Strip Section */}
-      <div className={`relative w-full max-w-[1600px] mx-auto flex flex-col z-10 transition-colors duration-700 ease-in-out ${imageLoaded ? 'bg-transparent' : 'skeleton-bg'}`}>
+      <div 
+        className={`relative w-full mx-auto flex flex-col z-10 transition-colors duration-700 ease-in-out ${imageLoaded ? 'bg-transparent' : 'skeleton-bg'}`}
+        style={{ maxWidth: `min(1600px, calc(65vh * ${bkgEyes.width / bkgEyes.height}))` }}
+      >
         <Image 
           src={bkgEyes} 
           alt="Eyes" 

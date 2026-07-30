@@ -67,13 +67,13 @@ function getSequenceAnimation(trigger: ScribbleTrigger, isPaused = false) {
     return {
       transition: {
         duration: 5,
-        times: [0, 0.15, 0.3, 0.85, 0.9, 1],
+        times: [0, 0.149, 0.15, 0.3, 0.85, 0.9, 1],
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        ease: [ "linear", [0.16, 1, 0.3, 1] as any, "linear", "linear", "linear" ],
+        ease: [ "linear", "linear", [0.16, 1, 0.3, 1] as any, "linear", "linear", "linear" ],
       },
       animate: {
-        pathLength: [0, 0, 1, 1, 0, 0],
-        opacity: [0, 1, 1, 1, 0, 0]
+        pathLength: [0, 0, 0, 1, 1, 0, 0],
+        opacity: [0, 0, 1, 1, 1, 0, 0]
       }
     };
   }
@@ -158,6 +158,7 @@ export function Scribble({ type, trigger = "target", loops = 2, className = "" }
                 key={loopKey}
                 d={path} 
                 pathLength={1} 
+                initial={{ pathLength: 0, opacity: 0 }}
                 animate={getSequenceAnimation(trigger, isActive).animate} 
                 transition={getSequenceAnimation(trigger, isActive).transition} 
                 onAnimationComplete={() => {

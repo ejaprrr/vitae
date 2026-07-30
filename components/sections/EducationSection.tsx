@@ -21,6 +21,7 @@ export function EducationSection() {
             year={edu.year}
             title={edu.title}
             description={edu.description}
+            url={edu.url}
           />
         ))}
       </ScribbleGroup>

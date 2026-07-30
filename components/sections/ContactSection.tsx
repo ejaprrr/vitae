@@ -30,6 +30,11 @@ export function ContactSection() {
                 className="absolute -inset-2 md:-inset-3 text-[#FF0000] z-20 pointer-events-none"
               />
               <Scribble 
+                type="arrowDown"
+                trigger="sequence1"
+                className="absolute -top-14 left-8 w-8 h-12 text-[#FF0000] block md:hidden pointer-events-none"
+              />
+              <Scribble 
                 type="arrow"
                 trigger="sequence1"
                 className="absolute top-1/2 -left-24 w-24 h-12 text-[#FF0000] -translate-y-1/2 hidden md:block pointer-events-none"

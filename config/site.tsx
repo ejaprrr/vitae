@@ -94,8 +94,8 @@ export const siteConfig = {
   ],
 
   skills: [
-    { 
-      category: "programování", 
+    {
+      category: "programování",
       items: [
         { name: "typescript", url: "https://www.typescriptlang.org/" },
         { name: "javascript", url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
@@ -104,8 +104,8 @@ export const siteConfig = {
         { name: "java", url: "https://www.java.com/" }
       ]
     },
-    { 
-      category: "web & frameworky", 
+    {
+      category: "web & frameworky",
       items: [
         { name: "react", url: "https://react.dev/" },
         { name: "svelte", url: "https://svelte.dev/" },
@@ -114,8 +114,8 @@ export const siteConfig = {
         { name: "php", url: "https://www.php.net/" }
       ]
     },
-    { 
-      category: "databáze & nástroje", 
+    {
+      category: "databáze & nástroje",
       items: [
         { name: "mongodb", url: "https://www.mongodb.com/" },
         { name: "postgresql", url: "https://www.postgresql.org/" },
@@ -124,8 +124,8 @@ export const siteConfig = {
         { name: "unix", url: "https://en.wikipedia.org/wiki/Unix" }
       ]
     },
-    { 
-      category: "design & produkce", 
+    {
+      category: "design & produkce",
       items: [
         { name: "figma", url: "https://www.figma.com/" },
         { name: "after effects", url: "https://www.adobe.com/products/aftereffects.html" },
@@ -140,7 +140,8 @@ export const siteConfig = {
     {
       year: "2023 – 2027",
       title: "voš a spše plzeň",
-      description: "obor informační technologie, postupně se specializuji na datovou analytiku a vývoj aplikací."
+      description: "obor informační technologie, specializace na datovou analytiku.",
+      url: "https://www.spseplzen.cz"
     },
     {
       year: "2025",
@@ -149,7 +150,8 @@ export const siteConfig = {
           aimtec hackathon<br /><span>3. místo</span>
         </>
       ),
-      description: "intenzivní týmová práce s tvrdým deadlinem. navrhli a postavili jsme reálnou aplikaci, která si odnesla třetí místo."
+      description: "intenzivní týmová práce s tvrdým deadlinem. navrhli a postavili jsme reálnou aplikaci, která si odnesla třetí místo.",
+      url: "https://www.aimtecglobal.com/tiskove-zpravy/vysledky-aimtechackathonu-2025-nejlepsi-projekty-pomohou-autistickym-detem-a-lekarum"
     },
     {
       year: "2025",
@@ -158,7 +160,8 @@ export const siteConfig = {
           cambridge<br /><span>c1 advanced</span>
         </>
       ),
-      description: "angličtinu používám naprosto přirozeně, ať už při čtení technické dokumentace nebo v komunikaci se zahraničním týmem."
+      description: "angličtinu používám naprosto přirozeně, ať už při čtení technické dokumentace nebo v komunikaci se zahraničním týmem.",
+      url: "https://www.cambridgeenglish.org/exams-and-tests/advanced/"
     }
   ],
 
