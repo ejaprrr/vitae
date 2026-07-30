@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/Button";
-import { Scribble, ScribbleTarget } from "@/components/scribbles";
+import { Scribble } from "@/components/scribbles";
 import { Reveal } from "@/components/ui/Reveal";
 
 export default function NotFound() {
@@ -11,8 +11,8 @@ export default function NotFound() {
             404
             <Scribble 
               type="underline" 
-              trigger="sequence1" 
-              className="absolute -bottom-2 sm:-bottom-4 left-0 w-full h-4 sm:h-6 text-[#FF0000] -z-10" 
+              trigger="static" 
+              className="absolute -bottom-2 sm:-bottom-4 left-0 w-full h-4 sm:h-6 text-brand -z-10" 
             />
           </h1>
         </Reveal>
@@ -24,21 +24,21 @@ export default function NotFound() {
         </Reveal>
 
         <Reveal delay={0.3}>
-          <ScribbleTarget className="relative inline-block w-max mt-4" as="div">
+          <div className="relative inline-block w-max mt-4">
             <Button href="/" theme="dark" className="text-base sm:text-lg px-8 py-3 relative z-10">
               zpět na hlavní stranu
             </Button>
             <Scribble 
               type="circle"
-              trigger="sequence2"
-              className="absolute -inset-2 md:-inset-3 text-[#FF0000] z-20 pointer-events-none"
+              trigger="static"
+              className="absolute -inset-2 md:-inset-3 text-brand z-20 pointer-events-none"
             />
             <Scribble 
-              type="arrowDown"
-              trigger="sequence1"
-              className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-12 h-16 text-[#FF0000] rotate-180 pointer-events-none"
+              type="arrowUp"
+              trigger="static"
+              className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-12 h-16 text-brand pointer-events-none"
             />
-          </ScribbleTarget>
+          </div>
         </Reveal>
       </main>
     </div>

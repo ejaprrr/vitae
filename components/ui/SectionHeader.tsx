@@ -19,10 +19,10 @@ export function SectionHeader({ title, number, theme = "light" }: SectionHeaderP
             type="underline" 
             trigger="scroll" 
             loops={2} 
-            className="absolute -bottom-1 -left-2 w-[calc(100%+16px)] h-3 text-[#FF0000]" 
+            className="absolute -bottom-1 -left-2 w-[calc(100%+16px)] h-3 text-brand" 
           />
         </h2>
-        <span className="text-[#FF0000] text-xl md:text-2xl font-medium">{number}</span>
+        <span className="text-brand text-xl md:text-2xl font-medium">{number}</span>
       </div>
     </Reveal>
   );

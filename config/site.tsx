@@ -54,14 +54,14 @@ export const siteConfig = {
       {
         text: (
           <>
-            <span className="text-black font-medium">studuji informatiku a datovou analytiku.</span> baví mě řešit komplexní problémy a navrhovat architekturu, která funguje. vím ale, že stabilní backend je jen polovina úspěchu – proto se aktivně věnuji i <span className="relative inline-block z-10 px-1 py-1 -mx-1 -my-1 text-black font-medium">vizuální identitě a ui/ux.<Scribble type="circle" trigger="sequence2" loops={1} className="absolute inset-0 text-[#FF0000] -z-10" /></span> nevnímám design jen jako hezký obal, ale jako základ pro to, aby se produkt dobře používal.
+            <span className="text-black font-medium">studuji informatiku a datovou analytiku.</span> baví mě řešit komplexní problémy a navrhovat architekturu, která funguje. vím ale, že stabilní backend je jen polovina úspěchu – proto se aktivně věnuji i <span className="relative inline-block z-10 px-1 py-1 -mx-1 -my-1 text-black font-medium">vizuální identitě a ui/ux.<Scribble type="circle" trigger="loop" delay={2.1} loops={1} className="absolute inset-0 text-brand -z-10" /></span> nevnímám design jen jako hezký obal, ale jako základ pro to, aby se produkt dobře používal.
           </>
         )
       },
       {
         text: (
           <>
-            mám rád minimalismus a u složitých věcí hledám <span className="text-black font-medium">tu nejpřímější cestu.</span> dokážu projekt provést celým procesem – od prvotní myšlenky až po <span className="relative inline-block z-10 px-1 py-1 -mx-1 -my-1 text-black font-medium">finální nasazení.<Scribble type="underline" trigger="sequence1" className="absolute -bottom-1 left-0 w-full h-3 text-[#FF0000] -z-10" /></span> postupně směřuji do mezinárodního prostředí a chci se podílet na věcech, které mají reálný dopad.
+            mám rád minimalismus a u složitých věcí hledám <span className="text-black font-medium">tu nejpřímější cestu.</span> dokážu projekt provést celým procesem – od prvotní myšlenky až po <span className="relative inline-block z-10 px-1 py-1 -mx-1 -my-1 text-black font-medium">finální nasazení.<Scribble type="underline" trigger="loop" className="absolute -bottom-1 left-0 w-full h-3 text-brand -z-10" /></span> postupně směřuji do mezinárodního prostředí a chci se podílet na věcech, které mají reálný dopad.
           </>
         )
       }
@@ -168,7 +168,7 @@ export const siteConfig = {
   contact: {
     heading: (
       <>
-        máte nápad?<br /><span className="text-[#FF0000]">pojďme se o něm pobavit.</span>
+        máte nápad?<br /><span className="text-brand">pojďme se o něm pobavit.</span>
       </>
     ),
     cta: "napsat zprávu"

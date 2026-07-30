@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import { Scribble, ScribbleTarget } from "@/components/scribbles";
+import Link from "next/link";
+import { Scribble } from "@/components/scribbles";
 
 interface AnimatedLinkProps {
   href: string;
@@ -36,8 +37,9 @@ export function AnimatedLink({
   };
 
   if (disableAnimation) {
+    const Component = external ? "a" : Link;
     return (
-      <a 
+      <Component 
         href={href} 
         onClick={handleClick} 
         className={className}
@@ -45,32 +47,25 @@ export function AnimatedLink({
         rel={external ? "noopener noreferrer" : undefined}
       >
         {children}
-      </a>
+      </Component>
     );
   }
 
-  // Base classes for NavLink style or SocialLink style depending on external
-  const baseClasses = external 
-    ? "md:hover:text-[#FF0000] active:text-[#FF0000] transition-colors relative group w-max"
-    : "inline-block cursor-pointer px-2 sm:px-3 py-1 [-webkit-tap-highlight-color:transparent] touch-manipulation transition-all duration-200 md:hover:scale-105 active:scale-105 relative group";
-
   return (
-    <ScribbleTarget 
-      as="a" 
+    <Scribble
+      as={external ? "a" : Link}
       href={href}
       onClick={handleClick}
       target={external ? "_blank" : undefined}
       rel={external ? "noopener noreferrer" : undefined}
-      className={`${baseClasses} ${className}`}
+      className={`relative group inline-block ${className}`}
+      type={type}
+      trigger="hover"
+      scribbleClassName={type === "underline" ? `absolute left-0 w-full text-brand ${external ? "-bottom-1 h-3" : "-bottom-2 h-4"}` : "absolute inset-0 text-brand"}
     >
-      <span className={external ? "" : "block"}>
+      <span className="relative z-10 transition-colors duration-300 group-hover:text-black">
         {children}
       </span>
-      {type === "underline" ? (
-        <Scribble type="underline" trigger="target" className={`absolute left-0 w-full text-[#FF0000] ${external ? "-bottom-1 h-3" : "-bottom-2 h-4"}`} />
-      ) : (
-        <Scribble type="circle" trigger="target" className="absolute inset-0 text-[#FF0000]" />
-      )}
-    </ScribbleTarget>
+    </Scribble>
   );
 }

@@ -3,12 +3,20 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --brand: #FF0000;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-brand: var(--brand);
   --font-sans: var(--font-inter);
+}
+
+@layer components {
+  .text-body {
+    @apply text-base md:text-lg lg:text-xl leading-[1.5] lowercase;
+  }
 }
 
 body {
@@ -25,4 +33,14 @@ body {
 
 html {
   scroll-behavior: smooth;
+}
+
+::selection {
+  background-color: var(--brand);
+  color: #ffffff;
+}
+
+::-moz-selection {
+  background-color: var(--brand);
+  color: #ffffff;
 }

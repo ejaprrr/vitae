@@ -1,19 +1,23 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 
-import { motion, MotionConfig } from "framer-motion";
+import { m, MotionConfig } from "framer-motion";
 import { useState, useEffect } from "react";
-import { generateArrowDown } from "@/utils/pathGenerators";
+import { useRouter } from "next/navigation";
+import { useScribblePath } from "@/hooks/scribbles/useScribblePath";
 
 export function ScrollIndicator() {
+  const router = useRouter();
   const [isTouchDevice, setIsTouchDevice] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
 
-  const [path, setPath] = useState("");
+  const [loopKey, setLoopKey] = useState(0);
+  
+  // Use the new headless hook! It handles resizing and generates the path
+  const { ref, path } = useScribblePath('arrowDown', 2, loopKey);
 
   useEffect(() => {
     setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0);
-    setPath(generateArrowDown(32, 64));
   }, []);
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -22,7 +26,7 @@ export function ScrollIndicator() {
       setIsClicked(true);
       setTimeout(() => {
         setIsClicked(false);
-        window.location.href = "#about";
+        router.push("#about");
       }, 300); // 300ms visual grace period
     }
   };
@@ -35,12 +39,14 @@ export function ScrollIndicator() {
       aria-label="Scroll to about section"
     >
       <MotionConfig reducedMotion="never">
-        <motion.svg 
+        <m.svg 
+          ref={ref as unknown as React.RefObject<SVGSVGElement>}
+          key={loopKey}
           width="32" 
           height="64" 
           viewBox="0 0 32 64" 
           fill="none" 
-          stroke={isTouchDevice && isClicked ? "#000000" : "#FF0000"} 
+          stroke={isTouchDevice && isClicked ? "#000000" : "var(--brand)"} 
           strokeWidth="1.5" 
           strokeLinecap="round" 
           strokeLinejoin="round"
@@ -50,27 +56,27 @@ export function ScrollIndicator() {
           transition={{ 
             duration: 4.5, 
             times: [0, 0.777, 1], // Hold for 3.5s, drop/fade for 1s
-            ease: [ "linear", [0.76, 0, 0.24, 1] ], // First segment linear hold, second is the buttery drop
-            repeat: Infinity 
+            ease: [ "linear", [0.76, 0, 0.24, 1] ]
           }}
+          onAnimationComplete={() => setLoopKey(k => k + 1)}
           style={{ willChange: "opacity, transform" }}
         >
           {/* A highly organic, natural scribble. */}
           {path && (
-            <motion.path 
+            <m.path 
               d={path}
               pathLength={1}
+              initial={{ pathLength: 0, opacity: 1 }}
               animate={{ pathLength: [0, 1, 1, 0, 0], opacity: [1, 1, 1, 0, 0] }}
               transition={{
                 duration: 4.5, 
                 times: [0, 0.666, 0.95, 0.96, 1],
-                ease: [ [0.16, 1, 0.3, 1], "linear", "linear", "linear" ],
-                repeat: Infinity
+                ease: [ [0.16, 1, 0.3, 1], "linear", "linear", "linear" ]
               }}
               style={{ willChange: "stroke-dashoffset" }}
             />
           )}
-        </motion.svg>
+        </m.svg>
       </MotionConfig>
     </a>
   );

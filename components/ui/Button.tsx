@@ -1,8 +1,9 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 
-import { motion, MotionConfig } from "framer-motion";
+import { m, MotionConfig } from "framer-motion";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 import { siteConfig } from "@/config/site";
 
@@ -14,6 +15,7 @@ interface ButtonProps {
 }
 
 export function Button({ href = "#contact", children = siteConfig.contact.cta, theme = "dark", className = "" }: ButtonProps) {
+  const router = useRouter();
   const [hoverAngle, setHoverAngle] = useState(-3);
   const [isTouchDevice, setIsTouchDevice] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
@@ -43,14 +45,31 @@ export function Button({ href = "#contact", children = siteConfig.contact.cta, t
       setIsClicked(true);
       setTimeout(() => {
         setIsClicked(false);
-        window.location.href = href;
+        if (href.startsWith('#')) {
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+          } else {
+            router.push(href);
+          }
+        } else {
+          router.push(href);
+        }
       }, 400); // 400ms visual grace period
+    } else {
+      if (href.startsWith('#')) {
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
     }
   };
 
   return (
     <MotionConfig reducedMotion="never">
-      <motion.a
+      <m.a
         href={href}
         onTouchStart={handleTouchStart}
         onClick={handleClick}
@@ -81,7 +100,7 @@ export function Button({ href = "#contact", children = siteConfig.contact.cta, t
         }}
       >
         {children}
-      </motion.a>
+      </m.a>
     </MotionConfig>
   );
 }

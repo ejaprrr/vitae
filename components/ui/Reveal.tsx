@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { ReactNode } from "react";
 
 interface RevealProps {
@@ -11,7 +11,7 @@ interface RevealProps {
 
 export function Reveal({ children, className = "", delay = 0 }: RevealProps) {
   return (
-    <motion.div
+    <m.div
       className={className}
       initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
       whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -23,13 +23,13 @@ export function Reveal({ children, className = "", delay = 0 }: RevealProps) {
       }}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }
 
 export function RevealStagger({ children, className = "", delay = 0 }: RevealProps) {
   return (
-    <motion.div
+    <m.div
       className={className}
       initial={{ opacity: 0, y: 60, filter: "blur(10px)" }}
       whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -41,6 +41,6 @@ export function RevealStagger({ children, className = "", delay = 0 }: RevealPro
       }}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }
