@@ -1,8 +1,13 @@
 import { ScribbleTarget, Scribble } from "@/components/scribbles";
 
+interface Skill {
+  name: string;
+  url: string;
+}
+
 interface SkillBlockProps {
   category: string;
-  skills: string[];
+  skills: Skill[];
 }
 
 export function SkillBlock({ category, skills }: SkillBlockProps) {
@@ -12,10 +17,14 @@ export function SkillBlock({ category, skills }: SkillBlockProps) {
       <div className="flex flex-col items-start gap-1">
         {skills.map((skill) => (
           <ScribbleTarget 
-            key={skill} 
-            className="text-3xl xl:text-4xl leading-[1.1] lowercase tracking-tight inline-block transition-colors cursor-default px-2 -mx-2 relative"
+            key={skill.name} 
+            as="a"
+            href={skill.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-3xl xl:text-4xl leading-[1.1] lowercase tracking-tight inline-block transition-colors cursor-pointer px-2 -mx-2 relative hover:text-black focus:outline-none"
           >
-            {skill}
+            {skill.name}
             <Scribble 
               type="underline" 
               trigger="target" 

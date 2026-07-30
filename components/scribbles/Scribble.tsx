@@ -1,10 +1,12 @@
+/* eslint-disable react-hooks/set-state-in-effect */
+/* eslint-disable react-hooks/purity */
 "use client";
 
 import { useState, useEffect, useLayoutEffect, useRef } from "react";
-import { motion, type Easing } from "framer-motion";
+import { motion } from "framer-motion";
 import { useScribble } from "./ScribbleTarget";
-import { ScribbleProps, ScribbleTrigger } from "./core/types";
-import { generateUnderline, generateCircle, generateArrow, generateArrowDown } from "./core/pathGenerators";
+import { ScribbleProps, ScribbleTrigger } from "@/types/scribbles";
+import { generateUnderline, generateCircle, generateArrow, generateArrowDown } from "@/utils/pathGenerators";
 
 function useScribbleDimensions() {
   const ref = useRef<HTMLDivElement>(null);
@@ -52,8 +54,8 @@ function getSequenceAnimation(trigger: ScribbleTrigger, isPaused = false) {
       transition: {
         duration: 5,
         times: [0, 0.3, 0.85, 0.9, 1],
-        ease: [ [0.16, 1, 0.3, 1] as [number,number,number,number], "linear", "linear", "linear" ] as Easing[],
-        repeat: Infinity
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        ease: [ [0.16, 1, 0.3, 1] as any, "linear", "linear", "linear" ],
       },
       animate: {
         pathLength: [0, 1, 1, 0, 0],
@@ -65,13 +67,13 @@ function getSequenceAnimation(trigger: ScribbleTrigger, isPaused = false) {
     return {
       transition: {
         duration: 5,
-        times: [0, 0.299, 0.3, 0.6, 0.85, 0.9, 1],
-        ease: [ "linear", "linear", [0.16, 1, 0.3, 1] as [number,number,number,number], "linear", "linear", "linear" ] as Easing[],
-        repeat: Infinity
+        times: [0, 0.15, 0.3, 0.85, 0.9, 1],
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        ease: [ "linear", [0.16, 1, 0.3, 1] as any, "linear", "linear", "linear" ],
       },
       animate: {
-        pathLength: [0, 0, 0, 1, 1, 0, 0],
-        opacity: [0, 0, 1, 1, 1, 0, 0]
+        pathLength: [0, 0, 1, 1, 0, 0],
+        opacity: [0, 1, 1, 1, 0, 0]
       }
     };
   }
@@ -98,29 +100,30 @@ export function Scribble({ type, trigger = "target", loops = 2, className = "" }
   const wasActive = useRef(isActive);
   const lastInactiveTime = useRef(Date.now());
 
+  const [loopKey, setLoopKey] = useState(0);
+  const lastLoopKey = useRef(-1);
+
   // Generate SVG path when dimensions change, or when it becomes active.
-  // Using useLayoutEffect ensures the path updates synchronously BEFORE the browser paints,
-  // so the CSS transition starts from the beginning of the NEW path!
   useLayoutEffect(() => {
     if (dims.w === 0 || dims.h === 0) return;
     
-    // Only regenerate on mount/resize, OR when going from inactive to active
-    // Retraction transition takes 400ms. If we hover faster than that, keep the old path so it doesn't jump!
     const justActivated = isActive && !wasActive.current;
     const fullyRetracted = Date.now() - lastInactiveTime.current > 450;
+    const isNewLoop = loopKey !== lastLoopKey.current;
     
-    if (path === "" || (justActivated && fullyRetracted)) {
+    if (path === "" || (justActivated && fullyRetracted) || isNewLoop) {
       if (type === "underline") setPath(generateUnderline(dims.w, dims.h, loops));
       else if (type === "circle") setPath(generateCircle(dims.w, dims.h, loops));
       else if (type === "arrow") setPath(generateArrow(dims.w, dims.h));
       else if (type === "arrowDown") setPath(generateArrowDown(dims.w, dims.h));
+      lastLoopKey.current = loopKey;
     }
     
     if (!isActive && wasActive.current) {
       lastInactiveTime.current = Date.now();
     }
     wasActive.current = isActive;
-  }, [dims.w, dims.h, type, loops, isActive, path]);
+  }, [dims.w, dims.h, type, loops, isActive, path, loopKey]);
 
   if (dims.w === 0 || dims.h === 0 || !path) {
     return <span ref={ref} className={`pointer-events-none block ${className}`} />;
@@ -132,6 +135,7 @@ export function Scribble({ type, trigger = "target", loops = 2, className = "" }
         <motion.svg viewBox={`0 0 ${dims.w} ${dims.h}`} fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full overflow-visible">
            {trigger === "scroll" ? (
               <motion.path 
+                key={loopKey}
                 d={path} 
                 pathLength="100" 
                 initial={{ strokeDashoffset: 120, opacity: 1 }}
@@ -139,6 +143,7 @@ export function Scribble({ type, trigger = "target", loops = 2, className = "" }
                   strokeDashoffset: [120, 0, 0, 120],
                   opacity: [1, 1, 1, 0]
                 }}
+                onViewportLeave={() => setLoopKey(k => k + 1)}
                 viewport={{ once: false, margin: "-50px" }}
                 transition={{ 
                   duration: 2.5, 
@@ -150,10 +155,15 @@ export function Scribble({ type, trigger = "target", loops = 2, className = "" }
               />
             ) : (
               <motion.path 
+                key={loopKey}
                 d={path} 
                 pathLength={1} 
                 animate={getSequenceAnimation(trigger, isActive).animate} 
                 transition={getSequenceAnimation(trigger, isActive).transition} 
+                onAnimationComplete={() => {
+                  if (isActive) return; // If isActive is true, it means it's paused, so don't loop
+                  setLoopKey(k => k + 1);
+                }}
                 style={{ willChange: "stroke-dashoffset" }} 
               />
             )}

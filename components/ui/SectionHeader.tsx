@@ -1,4 +1,4 @@
-import { Reveal } from "@/components/Reveal";
+import { Reveal } from "@/components/ui/Reveal";
 import { Scribble } from "@/components/scribbles";
 
 interface SectionHeaderProps {

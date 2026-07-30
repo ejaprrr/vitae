@@ -32,7 +32,7 @@ export function ScribbleTarget({ children, className = "", as: Component = "span
   
   const isTouchRef = useRef(false);
   const graceTimer = useRef<NodeJS.Timeout | null>(null);
-  let lastTouchTime = useRef(0);
+  const lastTouchTime = useRef(0);
 
   // Link to group if available
   const isActive = group ? group.activeId === id : isLocalActive;

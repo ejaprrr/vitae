@@ -1,5 +1,5 @@
 import { ScribbleTarget, Scribble } from "@/components/scribbles";
-import { RevealStagger } from "@/components/Reveal";
+import { RevealStagger } from "@/components/ui/Reveal";
 
 interface EducationCardProps {
   year: string;

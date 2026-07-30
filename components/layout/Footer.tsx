@@ -1,4 +1,4 @@
-import { SocialLink } from "@/components/ui/SocialLink";
+import { AnimatedLink } from "@/components/ui/AnimatedLink";
 import { siteConfig } from "@/config/site";
 
 export function Footer() {
@@ -20,9 +20,9 @@ export function Footer() {
           {/* Right: Links */}
           <div className="lg:w-1/2 flex flex-col sm:flex-row lg:justify-end gap-16 sm:gap-24">
             <div className="flex flex-col gap-2">
-              <span className="text-[#FF0000] mb-1">sociální sítě</span>
+              <span className="text-[#FF0000] mb-1">{siteConfig.footer.socialTitle}</span>
               {siteConfig.social.map((link, index) => (
-                <SocialLink key={index} href={link.href}>{link.label}</SocialLink>
+                <AnimatedLink key={index} href={link.href}>{link.label}</AnimatedLink>
               ))}
             </div>
           </div>
