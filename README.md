@@ -19,4 +19,4 @@ Konfigurace celého obsahu žije odděleně v `config/site.tsx`, zbytek je jen s
 
 ---
 
-**[\*DOMÉNA ZDE*](DOMÉNATODO)**
+**[www.eliasjp.cz](https://www.eliasjp.cz)**

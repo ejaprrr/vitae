@@ -1,10 +1,10 @@
 "use client";
 
-import { useLocale } from 'next-intl';
-import { usePathname, useRouter } from '@/i18n/routing';
-import { CZ, GB } from 'country-flag-icons/react/3x2';
-import { useState, useTransition } from 'react';
-import { m } from 'framer-motion';
+import { usePathname, useRouter } from "@/i18n/routing";
+import { CZ, GB } from "country-flag-icons/react/3x2";
+import { m } from "framer-motion";
+import { useLocale } from "next-intl";
+import { useState, useTransition } from "react";
 
 export function LanguageSwitcher() {
   const locale = useLocale();
@@ -22,12 +22,12 @@ export function LanguageSwitcher() {
 
   const toggleLocale = () => {
     if (isExiting || isPending) return;
-    
+
     // Nejdriv udelame blur-out
     setIsExiting(true);
-    
-    const nextLocale = locale === 'cs' ? 'en' : 'cs';
-    
+
+    const nextLocale = locale === "cs" ? "en" : "cs";
+
     // Pockame na dokonceni blur-out (300ms) a pak spustime fetch nove stranky
     setTimeout(() => {
       startTransition(() => {
@@ -40,20 +40,20 @@ export function LanguageSwitcher() {
     <button
       onClick={toggleLocale}
       className="ml-2 relative w-[22px] h-[15px] flex items-center justify-center cursor-pointer"
-      aria-label={`Switch to ${locale === 'cs' ? 'English' : 'Czech'}`}
+      aria-label={`Switch to ${locale === "cs" ? "English" : "Czech"}`}
       disabled={isPending || isExiting}
     >
       <m.div
         key={locale}
         initial={{ opacity: 0, filter: "blur(2px)" }}
-        animate={{ 
-          opacity: isExiting ? 0 : 1, 
-          filter: isExiting ? "blur(2px)" : "blur(0px)" 
+        animate={{
+          opacity: isExiting ? 0 : 1,
+          filter: isExiting ? "blur(2px)" : "blur(0px)",
         }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
         className="absolute inset-0 overflow-hidden flex items-center justify-center"
       >
-        {locale === 'cs' ? (
+        {locale === "cs" ? (
           <CZ className="w-[23px] h-auto block scale-[1.05]" />
         ) : (
           <GB className="w-[23px] h-auto block scale-[1.05]" />

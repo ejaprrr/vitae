@@ -1,9 +1,8 @@
 "use client";
 
-import { Scribble } from "@/components/ui/Scribble";
 import { RevealStagger } from "@/components/ui/Reveal";
+import { Scribble } from "@/components/ui/Scribble";
 import { useGraceNavigation } from "@/hooks/useGraceNavigation";
-
 
 interface EducationCardProps {
   year: string;
@@ -17,12 +16,11 @@ export function EducationCard({ year, title, description, url, delay = 0 }: Educ
   const isLink = !!url;
   const { navigateWithGrace } = useGraceNavigation();
 
-
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (!isLink || !url) return;
     navigateWithGrace(e, url, true); // true for external link
   };
-  
+
   return (
     <RevealStagger delay={delay} className="h-full">
       <Scribble
@@ -32,25 +30,25 @@ export function EducationCard({ year, title, description, url, delay = 0 }: Educ
         rel={isLink ? "noopener noreferrer" : undefined}
         onClick={handleClick}
         className={`bg-black text-white p-8 sm:p-10 lg:p-12 flex flex-col justify-between min-h-[320px] lg:min-h-[400px] h-full relative ${isLink ? "cursor-pointer group hover:bg-neutral-900 transition-colors" : "cursor-default"}`}
-        type="circle" 
-        trigger="hover" 
-        scribbleClassName="absolute -inset-2 md:-inset-4 text-brand z-20 pointer-events-none" 
+        type="circle"
+        trigger="hover"
+        scribbleClassName="absolute -inset-2 md:-inset-4 text-brand z-20 pointer-events-none"
       >
         <div className="flex justify-between items-start">
           <span className="text-brand text-lg font-medium">{year}</span>
           {isLink && (
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              viewBox="0 0 24 24" 
-              fill="none" 
-              stroke="currentColor" 
-              strokeWidth="2" 
-              strokeLinecap="round" 
-              strokeLinejoin="round" 
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               className="w-5 h-5 text-white transition-colors"
             >
-              <line x1="7" y1="17" x2="17" y2="7"></line>
-              <polyline points="7 7 17 7 17 17"></polyline>
+              <line x1="7" y1="17" x2="17" y2="7" />
+              <polyline points="7 7 17 7 17 17" />
             </svg>
           )}
         </div>

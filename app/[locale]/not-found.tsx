@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/Button";
-import { Scribble } from "@/components/ui/Scribble";
 import { Reveal } from "@/components/ui/Reveal";
+import { Scribble } from "@/components/ui/Scribble";
 import { useTranslations } from "next-intl";
 
 export default function NotFound() {
@@ -12,14 +12,14 @@ export default function NotFound() {
         <Reveal delay={0.1}>
           <h1 className="relative inline-block text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[8rem] leading-[1.05] lowercase tracking-tight mb-8 sm:mb-12 z-10">
             404
-            <Scribble 
-              type="underline" 
-              trigger="static" 
-              className="absolute -bottom-2 sm:-bottom-4 left-0 w-full h-4 sm:h-6 text-brand -z-10" 
+            <Scribble
+              type="underline"
+              trigger="static"
+              className="absolute -bottom-2 sm:-bottom-4 left-0 w-full h-4 sm:h-6 text-brand -z-10"
             />
           </h1>
         </Reveal>
-        
+
         <Reveal delay={0.2}>
           <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-[1.3] lowercase mb-16 sm:mb-20 max-w-[800px] mx-auto">
             {t("title")}
@@ -31,12 +31,12 @@ export default function NotFound() {
             <Button href="/" theme="dark" className="relative z-10">
               {t("back")}
             </Button>
-            <Scribble 
+            <Scribble
               type="circle"
               trigger="static"
               className="absolute -inset-2 md:-inset-3 text-brand z-20 pointer-events-none"
             />
-            <Scribble 
+            <Scribble
               type="arrowUp"
               trigger="static"
               className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-12 h-16 text-brand pointer-events-none"

@@ -1,16 +1,25 @@
-import type { Metadata } from 'next';
+import { getSiteUrl } from "@/config/site";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://www.eliasjp.cz"),
+  metadataBase: new URL(getSiteUrl()),
 };
 
 export default function GlobalNotFound() {
   return (
-    <html>
-      <head>
-        <meta httpEquiv="refresh" content="0; url=/en/404" />
-      </head>
-      <body></body>
+    <html lang="en">
+      <body>
+        <div
+          style={{
+            display: "flex",
+            height: "100vh",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <h1>404 - Not Found</h1>
+        </div>
+      </body>
     </html>
   );
 }

@@ -1,13 +1,14 @@
-import { MetadataRoute } from 'next';
+import { getSiteUrl } from "@/config/site";
+import type { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.eliasjp.cz';
+  const baseUrl = getSiteUrl();
 
   return {
     rules: {
-      userAgent: '*',
-      allow: '/',
-      disallow: '/api/',
+      userAgent: "*",
+      allow: "/",
+      disallow: "/api/",
     },
     sitemap: `${baseUrl}/sitemap.xml`,
   };

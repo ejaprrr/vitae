@@ -1,23 +1,12 @@
 {
   "global": {
-    "name": "eliáš jan procházka",
-    "shortName": "ejp",
     "openLink": "otevřít odkaz",
-    "email": "e.japrrr@gmail.com",
-    "roles": [
-      "vývojář",
-      "designer",
-      "analytik"
-    ],
+    "roles": ["vývojář", "designer", "analytik"],
     "close": "zavřít"
   },
   "seo": {
     "title": "eliáš jan procházka | vývojář, designer, analytik",
-    "description": "softwarový vývojář, designer a datový analytik. stavím digitální produkty pomocí čistého kódu a promyšleného designu.",
-    "openGraph": {
-      "title": "eliáš jan procházka | vývojář, designer, analytik",
-      "description": "softwarový vývojář, designer a datový analytik. stavím digitální produkty pomocí čistého kódu a promyšleného designu."
-    }
+    "description": "softwarový vývojář, designer a datový analytik. stavím digitální produkty pomocí čistého kódu a promyšleného designu."
   },
   "nav": {
     "about": "o mně",

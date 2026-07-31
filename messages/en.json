@@ -1,19 +1,12 @@
 {
   "global": {
-    "name": "eliáš jan procházka",
-    "shortName": "ejp",
     "openLink": "view project",
-    "email": "e.japrrr@gmail.com",
     "roles": ["developer", "designer", "analyst"],
     "close": "close"
   },
   "seo": {
     "title": "eliáš jan procházka | developer, designer, analyst",
-    "description": "software developer, designer, and data analyst. i build digital products with clean code and purposeful design.",
-    "openGraph": {
-      "title": "eliáš jan procházka | developer, designer, analyst",
-      "description": "software developer, designer, and data analyst. i build digital products with clean code and purposeful design."
-    }
+    "description": "software developer, designer, and data analyst. i build digital products with clean code and purposeful design."
   },
   "nav": {
     "about": "about",

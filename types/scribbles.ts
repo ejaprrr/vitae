@@ -1,6 +1,14 @@
-import { ReactNode, ElementType, AllHTMLAttributes } from "react";
+import type { AllHTMLAttributes, ElementType, ReactNode } from "react";
 
-export type ScribbleType = "underline" | "circle" | "arrowUp" | "arrowDown" | "arrowLeft" | "arrowRight" | "star" | "heart";
+export type ScribbleType =
+  | "underline"
+  | "circle"
+  | "arrowUp"
+  | "arrowDown"
+  | "arrowLeft"
+  | "arrowRight"
+  | "star"
+  | "heart";
 export type ScribbleTrigger = "hover" | "scroll" | "static" | "loop" | "sequence1" | "sequence2";
 
 export interface ScribbleProps extends Omit<AllHTMLAttributes<HTMLElement>, "as" | "type"> {
@@ -14,4 +22,3 @@ export interface ScribbleProps extends Omit<AllHTMLAttributes<HTMLElement>, "as"
   as?: ElementType;
   isActive?: boolean;
 }
-

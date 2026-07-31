@@ -1,4 +1,4 @@
-import { ReactNode, ElementType } from "react";
+import type { ElementType, ReactNode } from "react";
 
 interface ContainerProps {
   children: ReactNode;
@@ -9,7 +9,7 @@ interface ContainerProps {
 
 export function Container({ children, className = "", as: Component = "div", id }: ContainerProps) {
   return (
-    <Component 
+    <Component
       id={id}
       className={`w-full px-5 sm:px-8 md:px-16 lg:px-24 max-w-[1600px] mx-auto ${className}`}
     >

@@ -3,7 +3,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --brand: #FF0000;
+  --brand: #e50000;
 }
 
 @theme inline {
@@ -50,18 +50,18 @@ html {
     margin: 0;
     size: A4 portrait;
   }
-  
+
   body {
     background: white !important;
     color: black !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
-  
+
   .no-print {
     display: none !important;
   }
-  
+
   /* Reset some basic styles for print */
   .print-break-inside-avoid {
     break-inside: avoid;
