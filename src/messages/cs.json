@@ -17,14 +17,15 @@
     "experience": "zkušenosti",
     "skills": "dovednosti",
     "education": "vzdělání",
-    "contact": "kontakt"
+    "contact": "kontakt",
+    "cv": "životopis (cv)"
   },
   "about": {
     "title": "o mně",
     "statement": "stavím spolehlivé digitální produkty. čistý kód, <highlight1>strukturovaná data</highlight1> a design, který <highlight2>dává smysl.</highlight2>",
     "paragraphs": [
-      "<highlight>studuji informatiku a datovou analytiku.</highlight> zaměřuji se primárně na vývoj a architekturu. stabilní kód je ale podle mě jen část úspěchu. proto řeším i <highlightScribble>uživatelské rozhraní a design.</highlightScribble> dobrý design totiž určuje, jestli lidé budou aplikaci vůbec používat.",
-      "baví mě pracovat v prostředí, které staví na <highlight>otevřené komunikaci a týmové spolupráci.</highlight> díky analytickému zázemí umím rozkládat složité problémy na řešitelné kroky a zakládám si na proaktivním přístupu. dokážu propojit technickou logiku s <highlightScribble>pohledem běžného uživatele.</highlightScribble> mým dlouhodobým cílem je neustále se posouvat a podílet se na vývoji inovativních digitálních produktů s globálním přesahem."
+      "<highlight>studuji informatiku a datovou analytiku.</highlight> zaměřuji se primárně na vývoj, logiku a architekturu. stabilní kód je ale podle mě jen polovina úspěchu. proto intenzivně řeším i <highlightScribble>uživatelské rozhraní a design.</highlightScribble> dobrý vizuál přímo určuje, jestli lidé budou aplikaci rádi používat.",
+      "baví mě tvořit v prostředí, které staví na <highlight>otevřené komunikaci a týmové spolupráci.</highlight> díky analytickému základu umím složité problémy rozbít na jasné kroky a propojit čistou technickou logiku s <highlightScribble>pohledem běžného uživatele.</highlightScribble> mým cílem je stavět smysluplné digitální produkty s reálným dopadem."
     ],
     "cvButton": "stáhnout cv",
     "cvProfile": "<highlight>vývojář, designér a datový analytik.</highlight> rychle se adaptuji na nové výzvy a zakládám si na transparentní komunikaci v týmu. spojuji čistý kód, analytické řešení problémů a promyšlený design pro tvorbu robustních moderních aplikací."

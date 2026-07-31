@@ -55,7 +55,7 @@ export function Footer() {
               <MadeWithLove />
               <span className="text-black/50 text-sm md:text-base">
                 {t("footer.openSource")}{" "}
-                <AnimatedLink href="https://github.com/ejaprrr/art" external>
+                <AnimatedLink href="https://github.com/ejaprrr/vitae" external>
                   github
                 </AnimatedLink>
               </span>

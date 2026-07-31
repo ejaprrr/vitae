@@ -17,14 +17,15 @@
     "experience": "experience",
     "skills": "skills",
     "education": "education",
-    "contact": "contact"
+    "contact": "contact",
+    "cv": "resume (cv)"
   },
   "about": {
     "title": "about",
     "statement": "i build reliable digital products. clean code, <highlight1>structured data</highlight1>, and design that <highlight2>makes sense.</highlight2>",
     "paragraphs": [
-      "<highlight>i study computer science and data analytics.</highlight> my main focus is software development and architecture. but writing stable code is only part of the job. that’s why i also care about <highlightScribble>user interfaces and design.</highlightScribble> good design determines whether people will actually use the product.",
-      "i thrive in environments that value <highlight>open communication and teamwork.</highlight> my analytical background helps me break down complex problems, while my proactive approach ensures smooth collaboration. i can bridge the gap between technical logic and the <highlightScribble>end-user experience.</highlightScribble> my ultimate goal is to keep growing as a professional while delivering impactful, high-quality digital solutions on an international scale."
+      "<highlight>i study computer science and data analytics.</highlight> my main focus is software development and system architecture. but writing stable code is only half the battle. that’s why i heavily prioritize <highlightScribble>user interfaces and design.</highlightScribble> great visuals determine whether people will actually enjoy using the product.",
+      "i thrive in collaborative environments that value <highlight>open communication and teamwork.</highlight> my analytical background helps me break down complex problems and bridge the gap between pure technical logic and the <highlightScribble>end-user experience.</highlightScribble> my ultimate goal is to build meaningful digital products that leave a lasting real-world impact."
     ],
     "cvButton": "download cv",
     "cvProfile": "<highlight>software developer, designer, and data analyst.</highlight> i adapt quickly to new challenges and value transparent communication within a team. blending clean code, analytical problem-solving, and purposeful design to build robust modern applications."

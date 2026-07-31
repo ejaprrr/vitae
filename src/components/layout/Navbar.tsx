@@ -134,7 +134,7 @@ export function Navbar() {
                 type="underline"
                 onClick={() => setTimeout(() => setIsMenuOpen(false), 400)}
               >
-                životopis (cv)
+                {t("nav.cv")}
               </AnimatedLink>
               {siteConfig.social.map((link, i) => (
                 <AnimatedLink key={i} href={link.href} type="underline" external>
