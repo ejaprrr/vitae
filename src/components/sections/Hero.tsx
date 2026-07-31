@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/Button";
 import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
+import { Reveal } from "@/components/ui/Reveal";
 import bkgEyes from "@/public/bkg-eyes.jpg";
 import { m } from "framer-motion";
 import Image from "next/image";
@@ -93,8 +94,10 @@ export function Hero() {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 sm:bottom-12 left-1/2 -translate-x-1/2 z-20 text-brand">
-        <ScrollIndicator />
+      <div className="absolute bottom-12 left-0 right-0 flex justify-center no-print">
+        <Reveal delay={1.2}>
+          <ScrollIndicator direction="down" target="#about" />
+        </Reveal>
       </div>
     </div>
   );

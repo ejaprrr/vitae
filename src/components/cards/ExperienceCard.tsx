@@ -15,7 +15,7 @@ interface ExperienceItemProps {
   delay?: number;
 }
 
-export function ExperienceItem({
+export function ExperienceCard({
   delay,
   year,
   title,

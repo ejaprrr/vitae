@@ -6,7 +6,7 @@ export const routing = defineRouting({
   defaultLocale: "cs",
   // vzdy pouzivat prefix jazyka (napr. /cs nebo /en)
   localePrefix: "always",
-  localeDetection: false,
+  localeDetection: true,
 });
 
 export const { Link, redirect, usePathname, useRouter, getPathname } = createNavigation(routing);

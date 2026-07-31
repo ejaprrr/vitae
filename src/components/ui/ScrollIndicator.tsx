@@ -3,10 +3,15 @@
 import { useScribblePath } from "@/hooks/scribbles/useScribblePath";
 import { MotionConfig, m } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/i18n/routing";
 import { useEffect, useState } from "react";
 
-export function ScrollIndicator() {
+interface ScrollIndicatorProps {
+  direction: "up" | "down";
+  target: string;
+}
+
+export function ScrollIndicator({ direction, target }: ScrollIndicatorProps) {
   const t = useTranslations();
   const router = useRouter();
   const [isTouchDevice, setIsTouchDevice] = useState(false);
@@ -14,8 +19,7 @@ export function ScrollIndicator() {
 
   const [loopKey, setLoopKey] = useState(0);
 
-  // Use the new headless hook! It handles resizing and generates the path
-  const { ref, path } = useScribblePath("arrowDown", 2, loopKey);
+  const { ref, path } = useScribblePath(direction === "down" ? "arrowDown" : "arrowUp", 2, loopKey);
 
   useEffect(() => {
     setIsTouchDevice("ontouchstart" in window || navigator.maxTouchPoints > 0);
@@ -27,17 +31,34 @@ export function ScrollIndicator() {
       setIsClicked(true);
       setTimeout(() => {
         setIsClicked(false);
-        router.push("#about");
-      }, 300); // 300ms visual grace period
+        if (target.startsWith("#")) {
+          // Native smooth scroll for hash links if possible, else router push
+          if (target === "#top") {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          } else {
+            router.push(target as any);
+          }
+        } else {
+          router.push(target as any);
+        }
+      }, 300);
+    } else {
+      if (target === "#top") {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
     }
   };
 
+  const ariaLabel = direction === "down" ? t("global.scrollToAbout") : t("global.scrollToTop");
+  const yAnim = direction === "down" ? 25 : -25;
+
   return (
     <a
-      href="#about"
+      href={target}
       onClick={handleClick}
       className="flex flex-col items-center justify-center p-4 group touch-manipulation cursor-pointer block [-webkit-tap-highlight-color:transparent]"
-      aria-label={t("global.scrollToAbout")}
+      aria-label={ariaLabel}
     >
       <MotionConfig reducedMotion="never">
         <m.svg
@@ -53,7 +74,7 @@ export function ScrollIndicator() {
           strokeLinejoin="round"
           className="md:group-hover:stroke-black transition-colors duration-300 overflow-visible"
           initial={{ opacity: 1, y: 0 }}
-          animate={{ y: [0, 0, 25], opacity: [1, 1, 0] }}
+          animate={{ y: [0, 0, yAnim], opacity: [1, 1, 0] }}
           transition={{
             duration: 4.5,
             times: [0, 0.777, 1], // Hold for 3.5s, drop/fade for 1s
@@ -62,7 +83,6 @@ export function ScrollIndicator() {
           onAnimationComplete={() => setLoopKey((k) => k + 1)}
           style={{ willChange: "opacity, transform" }}
         >
-          {/* A highly organic, natural scribble. */}
           {path && (
             <m.path
               d={path}

@@ -1,5 +1,5 @@
 import { HighlightedText } from "@/components/ui/HighlightedText";
-import { PrintController } from "@/components/ui/PrintController";
+import { PrintController } from "@/components/features/PrintController";
 import { Scribble } from "@/components/ui/Scribble";
 import { siteConfig, skillsConfig } from "@/config/site";
 import { parseHighlights } from "@/lib/text";

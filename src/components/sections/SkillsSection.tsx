@@ -1,7 +1,7 @@
 import { Container } from "@/components/layout/Container";
 import { RevealStagger } from "@/components/ui/Reveal";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { SkillBlock } from "@/components/ui/SkillBlock";
+import { SkillCard } from "@/components/cards/SkillCard";
 import { sectionsConfig, skillsConfig } from "@/config/site";
 import { useTranslations } from "next-intl";
 
@@ -20,7 +20,7 @@ export function SkillsSection() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
         {skillsConfig.map((group, index) => (
           <RevealStagger key={group.key} delay={0.1 * index}>
-            <SkillBlock category={t(`skills.categories.${group.key}`)} skills={group.items} />
+            <SkillCard category={t(`skills.categories.${group.key}`)} skills={group.items} />
           </RevealStagger>
         ))}
       </div>

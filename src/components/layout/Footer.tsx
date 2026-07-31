@@ -2,7 +2,7 @@
 
 import { Container } from "@/components/layout/Container";
 import { AnimatedLink } from "@/components/ui/AnimatedLink";
-import { BackToTopIndicator } from "@/components/ui/BackToTopIndicator";
+import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 import { LocalTime } from "@/components/ui/LocalTime";
 import { Scribble } from "@/components/ui/Scribble";
 import { siteConfig } from "@/config/site";
@@ -53,7 +53,7 @@ export function Footer() {
 
           {/* Center: Back to Top & Made with Love */}
           <div className="flex flex-col items-center justify-center gap-2 w-full md:w-1/3 order-first md:order-none">
-            <BackToTopIndicator />
+            <ScrollIndicator direction="up" target="#top" />
             <div className="flex flex-col items-center gap-1">
               <MadeWithLove />
               <span className="text-black/50 text-sm md:text-base">

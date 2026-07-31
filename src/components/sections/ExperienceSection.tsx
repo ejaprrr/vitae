@@ -1,5 +1,6 @@
 import { Container } from "@/components/layout/Container";
-import { ExperienceItem } from "@/components/ui/ExperienceItem";
+import { ExperienceCard } from "@/components/cards/ExperienceCard";
+import { Reveal, RevealStagger } from "@/components/ui/Reveal";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { siteConfig } from "@/config/site";
 import { useTranslations } from "next-intl";
@@ -27,7 +28,7 @@ export function ExperienceSection() {
               url?: string;
             }>
           ).map((exp, index) => (
-            <ExperienceItem
+            <ExperienceCard
               key={index}
               delay={0.1 * (index + 1)}
               year={exp.year}

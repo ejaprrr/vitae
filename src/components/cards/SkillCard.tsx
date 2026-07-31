@@ -13,7 +13,7 @@ interface SkillBlockProps {
   skills: Skill[];
 }
 
-export function SkillBlock({ category, skills }: SkillBlockProps) {
+export function SkillCard({ category, skills }: SkillBlockProps) {
   const { navigateWithGrace, navigatingTo } = useGraceNavigation();
 
   const handleSkillClick = (e: React.MouseEvent<HTMLAnchorElement>, url: string) => {
