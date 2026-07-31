@@ -4,7 +4,7 @@ import { defineRouting } from "next-intl/routing";
 export const routing = defineRouting({
   locales: ["cs", "en"],
   defaultLocale: "cs",
-  // Always use locale prefix (e.g. /cs or /en)
+  // vzdy pouzivat prefix jazyka (napr. /cs nebo /en)
   localePrefix: "always",
   localeDetection: false,
 });

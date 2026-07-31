@@ -58,7 +58,10 @@ export function useScribblePath(type: ScribbleType | null, loops = 2, loopKey = 
     else if (type === "arrowRight") setPath(generateArrowDirectional(dims.w, dims.h, "right"));
     else if (type === "star") setPath(generateStar(dims.w, dims.h, loops));
     else if (type === "heart") setPath(generateHeart(dims.w, dims.h, loops));
-  }, [dims.w, dims.h, type, loops]);
+
+    // pouzivame loopkey pro vynuceni rerenderu
+    void loopKey;
+  }, [dims.w, dims.h, type, loops, loopKey]);
 
   return { ref, dims, path };
 }

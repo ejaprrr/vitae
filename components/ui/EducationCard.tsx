@@ -4,6 +4,8 @@ import { RevealStagger } from "@/components/ui/Reveal";
 import { Scribble } from "@/components/ui/Scribble";
 import { useGraceNavigation } from "@/hooks/useGraceNavigation";
 
+import { useState } from "react";
+
 interface EducationCardProps {
   year: string;
   title: React.ReactNode;
@@ -13,8 +15,10 @@ interface EducationCardProps {
 }
 
 export function EducationCard({ year, title, description, url, delay = 0 }: EducationCardProps) {
+  const [isHovered, setIsHovered] = useState(false);
   const isLink = !!url;
-  const { navigateWithGrace } = useGraceNavigation();
+  const { navigateWithGrace, navigatingTo } = useGraceNavigation();
+  const isClicked = url ? navigatingTo === url : false;
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (!isLink || !url) return;
@@ -29,27 +33,26 @@ export function EducationCard({ year, title, description, url, delay = 0 }: Educ
         target={isLink ? "_blank" : undefined}
         rel={isLink ? "noopener noreferrer" : undefined}
         onClick={handleClick}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
         className={`bg-black text-white p-8 sm:p-10 lg:p-12 flex flex-col justify-between min-h-[320px] lg:min-h-[400px] h-full relative ${isLink ? "cursor-pointer group hover:bg-neutral-900 transition-colors" : "cursor-default"}`}
         type="circle"
         trigger="hover"
+        isActive={isHovered || isClicked}
         scribbleClassName="absolute -inset-2 md:-inset-4 text-brand z-20 pointer-events-none"
       >
         <div className="flex justify-between items-start">
           <span className="text-brand text-lg font-medium">{year}</span>
           {isLink && (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="w-5 h-5 text-white transition-colors"
-            >
-              <line x1="7" y1="17" x2="17" y2="7" />
-              <polyline points="7 7 17 7 17 17" />
-            </svg>
+            <div className="w-6 h-6 transition-all duration-300 opacity-100 translate-x-0 lg:opacity-0 lg:-translate-x-2 lg:group-hover:opacity-100 lg:group-hover:translate-x-0">
+              <Scribble
+                type="arrowRight"
+                trigger="hover"
+                loops={2}
+                isActive={isHovered || isClicked}
+                className="w-full h-full text-white -rotate-45"
+              />
+            </div>
           )}
         </div>
         <div className="mt-16">

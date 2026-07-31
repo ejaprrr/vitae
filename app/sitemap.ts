@@ -6,9 +6,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const pages = [
     { route: "/cs", priority: 1.0, altRoute: "/en" },
-    { route: "/en", priority: 0.9, altRoute: "/cs" },
-    { route: "/cs/cv", priority: 0.8, altRoute: "/en/cv" },
-    { route: "/en/cv", priority: 0.8, altRoute: "/cs/cv" },
+    { route: "/en", priority: 1.0, altRoute: "/cs" },
+    { route: "/cs/cv", priority: 0.5, altRoute: "/en/cv" },
+    { route: "/en/cv", priority: 0.5, altRoute: "/cs/cv" },
   ];
 
   return pages.map(({ route, priority, altRoute }) => ({

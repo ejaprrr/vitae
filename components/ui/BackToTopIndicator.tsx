@@ -3,41 +3,40 @@
 import { useScribblePath } from "@/hooks/scribbles/useScribblePath";
 import { MotionConfig, m } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-export function ScrollIndicator() {
+export function BackToTopIndicator() {
   const t = useTranslations();
-  const router = useRouter();
   const [isTouchDevice, setIsTouchDevice] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
 
   const [loopKey, setLoopKey] = useState(0);
 
-  // Use the new headless hook! It handles resizing and generates the path
-  const { ref, path } = useScribblePath("arrowDown", 2, loopKey);
+  const { ref, path } = useScribblePath("arrowUp", 2, loopKey);
 
   useEffect(() => {
     setIsTouchDevice("ontouchstart" in window || navigator.maxTouchPoints > 0);
   }, []);
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
     if (isTouchDevice) {
-      e.preventDefault();
       setIsClicked(true);
       setTimeout(() => {
         setIsClicked(false);
-        router.push("#about");
-      }, 300); // 300ms visual grace period
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }, 300);
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
   return (
     <a
-      href="#about"
+      href="#top"
       onClick={handleClick}
       className="flex flex-col items-center justify-center p-4 group touch-manipulation cursor-pointer block [-webkit-tap-highlight-color:transparent]"
-      aria-label={t("global.scrollToAbout")}
+      aria-label={t("global.scrollToTop")}
     >
       <MotionConfig reducedMotion="never">
         <m.svg
@@ -53,16 +52,15 @@ export function ScrollIndicator() {
           strokeLinejoin="round"
           className="md:group-hover:stroke-black transition-colors duration-300 overflow-visible"
           initial={{ opacity: 1, y: 0 }}
-          animate={{ y: [0, 0, 25], opacity: [1, 1, 0] }}
+          animate={{ y: [0, 0, -25], opacity: [1, 1, 0] }}
           transition={{
             duration: 4.5,
-            times: [0, 0.777, 1], // Hold for 3.5s, drop/fade for 1s
+            times: [0, 0.777, 1],
             ease: ["linear", [0.76, 0, 0.24, 1]],
           }}
           onAnimationComplete={() => setLoopKey((k) => k + 1)}
           style={{ willChange: "opacity, transform" }}
         >
-          {/* A highly organic, natural scribble. */}
           {path && (
             <m.path
               d={path}

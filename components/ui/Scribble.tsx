@@ -57,16 +57,34 @@ export function Scribble({
       <Component
         ref={containerRef as React.Ref<HTMLElement>}
         className={className}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        onTouchStart={() => setIsHovered(true)}
-        onTouchEnd={() => setTimeout(() => setIsHovered(false), 300)}
-        onTouchCancel={() => setIsHovered(false)}
+        onMouseEnter={(e: React.MouseEvent<HTMLElement>) => {
+          setIsHovered(true);
+          if (rest.onMouseEnter) rest.onMouseEnter(e);
+        }}
+        onMouseLeave={(e: React.MouseEvent<HTMLElement>) => {
+          setIsHovered(false);
+          if (rest.onMouseLeave) rest.onMouseLeave(e);
+        }}
+        onTouchStart={(e: React.TouchEvent<HTMLElement>) => {
+          setIsHovered(true);
+          if (rest.onTouchStart) rest.onTouchStart(e);
+        }}
+        onTouchEnd={(e: React.TouchEvent<HTMLElement>) => {
+          setTimeout(() => setIsHovered(false), 300);
+          if (rest.onTouchEnd) rest.onTouchEnd(e);
+        }}
+        onTouchCancel={(e: React.TouchEvent<HTMLElement>) => {
+          setIsHovered(false);
+          if (rest.onTouchCancel) rest.onTouchCancel(e);
+        }}
         onClick={(e: React.MouseEvent<HTMLElement>) => {
           setIsHovered(false);
           if (rest.onClick) rest.onClick(e);
         }}
-        {...rest}
+        {...(() => {
+          const { onMouseEnter, onMouseLeave, onTouchStart, onTouchEnd, onTouchCancel, onClick, ...otherProps } = rest;
+          return otherProps;
+        })()}
       >
         {children}
         <span

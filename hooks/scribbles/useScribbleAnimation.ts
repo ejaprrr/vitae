@@ -89,7 +89,7 @@ export function useScribbleAnimation(
           onAnimationComplete: () => setLoopKey((k) => k + 1),
         };
       }
-      // sequence2
+      // sekvence 2
       return {
         initial: { strokeDashoffset: 120, opacity: 0 },
         animate: { strokeDashoffset: [120, 0, 0, 120], opacity: [1, 1, 1, 0] },
@@ -128,7 +128,7 @@ export function useScribbleAnimation(
       };
     }
 
-    // hover and static
+    // hover a staticky stav
     return {
       initial:
         trigger === "static"

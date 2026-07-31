@@ -32,6 +32,7 @@ export function Hero() {
         <Image
           src={bkgEyes}
           alt=""
+          aria-hidden="true"
           placeholder="blur"
           className="w-full h-auto z-0 block md:hidden select-none pointer-events-none"
           sizes="(max-width: 768px) 100vw, 100vw"
@@ -40,6 +41,7 @@ export function Hero() {
         <Image
           src={bkgEyes}
           alt=""
+          aria-hidden="true"
           placeholder="blur"
           className="w-full h-auto z-0 block sm:hidden select-none pointer-events-none"
           sizes="(max-width: 640px) 100vw, 100vw"

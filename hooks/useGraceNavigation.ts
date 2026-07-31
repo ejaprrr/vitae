@@ -16,10 +16,10 @@ export function useGraceNavigation(delayMs = 400) {
     (e: React.MouseEvent | React.TouchEvent, href?: string, external = false) => {
       if (!href) return;
 
-      // Prevent default browser/Link routing so we can control the flow
+      // zamezeni vychoziho chovani prohlizece/linku, abychom meli plnou kontrolu nad navigaci
       e.preventDefault();
 
-      // If it's a touch device, add the grace delay for animations
+      // na dotykovych zarizenich pridame zpozdeni, aby dobehla animace
       if (isTouchDevice) {
         setNavigatingTo(href);
         setTimeout(() => {
@@ -40,7 +40,7 @@ export function useGraceNavigation(delayMs = 400) {
         return;
       }
 
-      // Desktop behavior: instant navigation, but with smooth scroll support
+      // na desktopu se navigujeme hned, ale podporujeme plynule scrolovani
       if (external) {
         window.open(href, "_blank");
       } else if (href.startsWith("#")) {

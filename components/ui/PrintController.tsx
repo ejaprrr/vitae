@@ -70,13 +70,13 @@ export function PrintController() {
           onClick={() => window.print()}
           className="text-black/60 hover:text-brand font-medium lowercase transition-colors cursor-pointer"
         >
-          zkusit znovu
+          {t("retry")}
         </button>
         <button
           onClick={() => router.push("/")}
           className="text-black/60 hover:text-black font-medium lowercase transition-colors cursor-pointer"
         >
-          zpět na web
+          {t("back")}
         </button>
       </div>
     </div>

@@ -1,7 +1,7 @@
 export function generateUnderline(w: number, h: number, loops = 2) {
   const r = (min: number, max: number) => Math.random() * (max - min) + min;
 
-  // Use absolute margins bounded by percentages so it doesn't leave huge gaps on large elements
+  // absolutni okraje omezene procenty, aby nevznikly obrovske mezery na velkych elementech
   const marginX = Math.min(10, w * 0.05);
 
   const currentX = r(0, marginX);
@@ -84,10 +84,10 @@ export function generateArrowDirectional(
 
   const r = (base: number, variance: number) => base + (Math.random() * variance * 2 - variance);
 
-  // Zvýšená variance pro opravdový "hand-drawn" chaos
-  const curveVx = W * 0.15; // Extrémní variance pro zakřivení samotné šipky
+  // zvysena variance pro opravdovy hand-drawn chaos
+  const curveVx = W * 0.15; // extremni variance pro zakriveni samotne sipky
   const curveVy = H * 0.15;
-  const px = W * 0.08; // Větší variance pro pozice hrotů
+  const px = W * 0.08; // vetsi variance pro pozice hrotu
   const py = H * 0.08;
 
   const p = (x: number, y: number) => {
@@ -105,22 +105,22 @@ export function generateArrowDirectional(
 
   const start = p(r(W * 0.05, px), r(H * 0.5, py));
 
-  // Křivka letu šipky (velká náhodnost)
+  // krivka letu sipky (velka nahodnost)
   const c1 = p(r(W * 0.3, curveVx), r(H * 0.3, curveVy));
   const c2 = p(r(W * 0.6, curveVx), r(H * 0.7, curveVy));
   const tip = p(r(W * 0.9, px), r(H * 0.5, py));
 
-  // Horní ploutvička
+  // horni ploutvicka
   const c3 = p(r(W * 0.8, px), r(H * 0.3, py));
   const c4 = p(r(W * 0.6, px), r(H * 0.2, py));
   const topFin = p(r(W * 0.45, px), r(H * 0.15, py));
 
-  // Návrat k hrotu
+  // navrat k hrotu
   const c5 = p(r(W * 0.55, px), r(H * 0.25, py));
   const c6 = p(r(W * 0.75, px), r(H * 0.4, py));
   const returnTip = p(r(W * 0.85, px), r(H * 0.5, py));
 
-  // Spodní ploutvička
+  // spodni ploutvicka
   const c7 = p(r(W * 0.75, px), r(H * 0.65, py));
   const c8 = p(r(W * 0.55, px), r(H * 0.8, py));
   const botFin = p(r(W * 0.45, px), r(H * 0.85, py));
@@ -140,11 +140,11 @@ export function generateStar(w: number, h: number, loops = 1) {
     const rotOffset = r(-0.1, 0.1);
     const points: { x: number; y: number }[] = [];
 
-    // 5-point pentagram drawn by jumping 2 vertices
+    // peticipy pentagram kresleny skokem o 2 vrcholy
     for (let i = 0; i < 5; i++) {
-      // Step by 2 * (2PI/5) = 144 degrees
+      // krok o 2 * (2pi/5) = 144 stupnu
       const angle = -Math.PI / 2 + (i * 2 * Math.PI * 2) / 5 + rotOffset;
-      // Jemnější odchylka poloměru
+      // jemnejsi odchylka polomeru
       const currentRadius = radius + r(-radius * 0.1, radius * 0.1);
 
       const varX = r(-w * 0.05, w * 0.05);
@@ -158,7 +158,7 @@ export function generateStar(w: number, h: number, loops = 1) {
     if (l === 0) {
       d += `M ${points[0].x} ${points[0].y}`;
     } else {
-      // Volnější napojení mezi smyčkami, ale s mírou
+      // volnejsi napojeni mezi smyckami, ale s mirou
       const c1x = cx + r(-w * 0.15, w * 0.15);
       const c1y = cy + r(-h * 0.15, h * 0.15);
       d += ` Q ${c1x} ${c1y} ${points[0].x} ${points[0].y}`;
@@ -167,7 +167,7 @@ export function generateStar(w: number, h: number, loops = 1) {
     for (let i = 1; i <= 5; i++) {
       const p = points[i % 5];
       const prev = points[i - 1];
-      // Větší chaos u čar spojujících cípy, ale drží tvar
+      // vetsi chaos u car spojujicich cipy, ale drzi tvar
       const c1x = prev.x + (p.x - prev.x) * 0.5 + r(-w * 0.08, w * 0.08);
       const c1y = prev.y + (p.y - prev.y) * 0.5 + r(-h * 0.08, h * 0.08);
       d += ` Q ${c1x} ${c1y} ${p.x} ${p.y}`;
@@ -186,20 +186,20 @@ export function generateHeart(w: number, h: number, loops = 1) {
   };
 
   for (let l = 0; l < loops; l++) {
-    // Velká asymetrie laloků (šišatost)
+    // velka asymetrie laloku (sisatost)
     const rightLobeTop = {
       x: w * 0.9 + r(-w * 0.1, w * 0.15),
       y: h * 0.05 + r(-h * 0.15, h * 0.2),
     };
     const rightEdge = { x: w * 0.95 + r(-w * 0.1, w * 0.05), y: h * 0.4 + r(-h * 0.1, h * 0.1) };
 
-    // Protažená špička na jedné straně (overshoot)
+    // protazena spicka na jedne strane (overshoot)
     const bottomTipRight = {
       x: w * 0.5 + r(-w * 0.1, w * 0.15),
-      y: h * 0.9 + r(0, h * 0.2), // Spodek často přetáhne dolů
+      y: h * 0.9 + r(0, h * 0.2), // spodek casto pretahne dolu
     };
 
-    // Druhá půlka začíná mírně vedle, čímž vznikne překřížení tahů na špičce
+    // druha pulka zacina mirne vedle, cimz vznikne prekrizeni tahu na spicce
     const bottomTipLeft = {
       x: bottomTipRight.x + r(-w * 0.15, w * 0.05),
       y: bottomTipRight.y + r(-h * 0.1, h * 0.05),
@@ -208,7 +208,7 @@ export function generateHeart(w: number, h: number, loops = 1) {
     const leftEdge = { x: w * 0.05 + r(-w * 0.05, w * 0.1), y: h * 0.4 + r(-h * 0.1, h * 0.1) };
     const leftLobeTop = { x: w * 0.1 + r(-w * 0.15, w * 0.1), y: h * 0.05 + r(-h * 0.15, h * 0.2) };
 
-    // Konec tahu se nemusí trefit přesně do výchozího bodu
+    // konec tahu se nemusi trefit presne do vychoziho bodu
     const endCleft = {
       x: currentCleft.x + r(-w * 0.15, w * 0.15),
       y: currentCleft.y + r(-h * 0.1, h * 0.15),
@@ -217,18 +217,18 @@ export function generateHeart(w: number, h: number, loops = 1) {
     if (l === 0) {
       d += `M ${currentCleft.x} ${currentCleft.y}`;
     } else {
-      // Volné navázání dalšího tahu
+      // volne navazani dalsiho tahu
       d += ` Q ${w * 0.5 + r(-w * 0.1, w * 0.1)} ${h * 0.5} ${currentCleft.x} ${currentCleft.y}`;
     }
 
-    // Pravá půlka dolů
+    // prava pulka dolu
     d += ` C ${rightLobeTop.x} ${currentCleft.y - h * 0.2}, ${rightEdge.x} ${rightLobeTop.y}, ${rightEdge.x} ${rightEdge.y}`;
     d += ` C ${rightEdge.x} ${h * 0.7}, ${w * 0.7} ${h * 0.8}, ${bottomTipRight.x} ${bottomTipRight.y}`;
 
-    // Ostrý zlom na špičce (překřížení tahu)
+    // ostry zlom na spicce (prekrizeni tahu)
     d += ` L ${bottomTipLeft.x} ${bottomTipLeft.y}`;
 
-    // Levá půlka nahoru
+    // leva pulka nahoru
     d += ` C ${w * 0.3} ${h * 0.8}, ${leftEdge.x} ${h * 0.7}, ${leftEdge.x} ${leftEdge.y}`;
     d += ` C ${leftEdge.x} ${leftLobeTop.y}, ${leftLobeTop.x} ${endCleft.y - h * 0.2}, ${endCleft.x} ${endCleft.y}`;
 

@@ -3,6 +3,7 @@
 import { Container } from "@/components/layout/Container";
 import { AnimatedLink } from "@/components/ui/AnimatedLink";
 import { LanguageSwitcher } from "@/components/ui/LanguageSwitcher";
+import { Scribble } from "@/components/ui/Scribble";
 import { navSections, siteConfig } from "@/config/site";
 import { AnimatePresence, m } from "framer-motion";
 import { useTranslations } from "next-intl";
@@ -46,13 +47,29 @@ export function Navbar() {
 
             {/* stred: menu toggle */}
             <div className="flex-1 flex justify-center">
-              <button
+              <Scribble
+                as="button"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-sm md:text-base font-medium tracking-wider lowercase hover:text-brand transition-colors cursor-pointer"
-                aria-label={isMenuOpen ? t("global.close") || "zavrit" : "menu"}
+                type="underline"
+                loops={2}
+                className="group z-50 relative pointer-events-auto cursor-pointer"
+                scribbleClassName="absolute left-0 w-full text-brand -bottom-1 h-3"
+                aria-label={isMenuOpen ? t("global.close") : t("global.menu")}
               >
-                {isMenuOpen ? t("global.close") || "zavrit" : "menu"}
-              </button>
+                <span className="relative z-10 transition-colors duration-300 group-hover:text-black grid *:[grid-area:1/1] place-items-center">
+                  <AnimatePresence mode="popLayout">
+                    <m.span
+                      key={isMenuOpen ? "close" : "menu"}
+                      initial={{ opacity: 0, filter: "blur(4px)" }}
+                      animate={{ opacity: 1, filter: "blur(0px)" }}
+                      exit={{ opacity: 0, filter: "blur(4px)" }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                    >
+                      {isMenuOpen ? t("global.close") : t("global.menu")}
+                    </m.span>
+                  </AnimatePresence>
+                </span>
+              </Scribble>
             </div>
 
             {/* prava cast: jazyk */}
@@ -104,7 +121,7 @@ export function Navbar() {
               ))}
             </div>
 
-            {/* sekce dalsich moznosti (CV, socials) */}
+            {/* sekce dalsich moznosti (cv, socials) */}
             <m.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}

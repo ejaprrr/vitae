@@ -3,10 +3,11 @@
 import { usePathname, useRouter } from "@/i18n/routing";
 import { CZ, GB } from "country-flag-icons/react/3x2";
 import { m } from "framer-motion";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useState, useTransition } from "react";
 
 export function LanguageSwitcher() {
+  const t = useTranslations();
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
@@ -23,12 +24,12 @@ export function LanguageSwitcher() {
   const toggleLocale = () => {
     if (isExiting || isPending) return;
 
-    // Nejdriv udelame blur-out
+    // nejdriv udelame blur-out
     setIsExiting(true);
 
     const nextLocale = locale === "cs" ? "en" : "cs";
 
-    // Pockame na dokonceni blur-out (300ms) a pak spustime fetch nove stranky
+    // pockame na dokonceni blur-out (300ms) a pak spustime fetch nove stranky
     setTimeout(() => {
       startTransition(() => {
         router.replace(pathname, { locale: nextLocale, scroll: false });
@@ -40,7 +41,7 @@ export function LanguageSwitcher() {
     <button
       onClick={toggleLocale}
       className="ml-2 relative w-[22px] h-[15px] flex items-center justify-center cursor-pointer"
-      aria-label={`Switch to ${locale === "cs" ? "English" : "Czech"}`}
+      aria-label={t("global.switchLanguage", { lang: locale === "cs" ? "English" : "Česky" })}
       disabled={isPending || isExiting}
     >
       <m.div

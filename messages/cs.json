@@ -2,7 +2,11 @@
   "global": {
     "openLink": "otevřít odkaz",
     "roles": ["vývojář", "designer", "analytik"],
-    "close": "zavřít"
+    "close": "zavřít",
+    "menu": "menu",
+    "switchLanguage": "změnit jazyk na {lang}",
+    "scrollToAbout": "přejít na sekci o mně",
+    "scrollToTop": "zpět nahoru"
   },
   "seo": {
     "title": "eliáš jan procházka | vývojář, designer, analytik",
@@ -20,10 +24,10 @@
     "statement": "stavím spolehlivé digitální produkty. čistý kód, <highlight1>strukturovaná data</highlight1> a design, který <highlight2>dává smysl.</highlight2>",
     "paragraphs": [
       "<highlight>studuji informatiku a datovou analytiku.</highlight> zaměřuji se primárně na vývoj a architekturu. stabilní kód je ale podle mě jen část úspěchu. proto řeším i <highlightScribble>uživatelské rozhraní a design.</highlightScribble> dobrý design totiž určuje, jestli lidé budou aplikaci vůbec používat.",
-      "hledám prostředí, kde se klade důraz na <highlight>kvalitu kódu a týmovou spolupráci.</highlight> dokážu propojit technickou stránku věci s <highlightScribble>pohledem běžného uživatele.</highlightScribble> momentálně hledám full-time pozici v mezinárodním týmu, kde se můžu dál posouvat."
+      "baví mě pracovat v prostředí, které staví na <highlight>otevřené komunikaci a týmové spolupráci.</highlight> díky analytickému zázemí umím rozkládat složité problémy na řešitelné kroky a zakládám si na proaktivním přístupu. dokážu propojit technickou logiku s <highlightScribble>pohledem běžného uživatele.</highlightScribble> mým dlouhodobým cílem je neustále se posouvat a podílet se na vývoji inovativních digitálních produktů s globálním přesahem."
     ],
     "cvButton": "stáhnout cv",
-    "cvProfile": "<highlight>vývojář, designér a datový analytik.</highlight> rád se učím nové věci a rychle se adaptuji v týmu. spojuji čistý kód a spolehlivá data s promyšleným designem. aktuálně hledám stálé místo v mezinárodním prostředí."
+    "cvProfile": "<highlight>vývojář, designér a datový analytik.</highlight> rychle se adaptuji na nové výzvy a zakládám si na transparentní komunikaci v týmu. spojuji čistý kód, analytické řešení problémů a promyšlený design pro tvorbu robustních moderních aplikací."
   },
   "experience": {
     "title": "zkušenosti",
@@ -90,9 +94,13 @@
     "cta": "napsat zprávu"
   },
   "cv": {
-    "preparing": "připravuji dokument..."
+    "preparing": "připravuji dokument...",
+    "retry": "zkusit znovu",
+    "back": "zpět na web"
   },
   "footer": {
-    "socialTitle": "sociální sítě"
+    "socialTitle": "sociální sítě",
+    "madeWithLove": "vytvořeno s",
+    "openSource": "open-source na"
   }
 }

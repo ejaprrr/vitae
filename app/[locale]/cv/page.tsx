@@ -1,42 +1,28 @@
 import { HighlightedText } from "@/components/ui/HighlightedText";
 import { PrintController } from "@/components/ui/PrintController";
 import { Scribble } from "@/components/ui/Scribble";
-import { getSiteUrl, siteConfig, skillsConfig } from "@/config/site";
+import { siteConfig, skillsConfig } from "@/config/site";
 import { parseHighlights } from "@/lib/text";
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 
 import type { Metadata } from "next";
 
+import { constructMetadata } from "@/config/seo";
+
 export async function generateMetadata({
   params,
 }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const tSeo = await getTranslations({ locale, namespace: "seo" });
-  const siteUrl = getSiteUrl();
 
-  const title = `cv — ${siteConfig.name}`;
-  const description = tSeo("description");
-
-  return {
-    title,
-    description,
-    alternates: {
-      canonical: `/${locale}/cv`,
-      languages: {
-        cs: "/cs/cv",
-        en: "/en/cv",
-        "x-default": "/cs/cv",
-      },
-    },
-    openGraph: {
-      title,
-      description,
-      type: "profile",
-      url: `${siteUrl}/${locale}/cv`,
-      siteName: siteConfig.name,
-    },
-  };
+  return constructMetadata({
+    locale,
+    title: `cv — ${siteConfig.name}`,
+    description: tSeo("description"),
+    path: "/cv",
+    noIndex: true,
+  });
 }
 
 export default async function CVPage({ params }: { params: Promise<{ locale: string }> }) {
@@ -88,12 +74,12 @@ export default async function CVPage({ params }: { params: Promise<{ locale: str
       <PrintController />
 
       {/* hlavni kontejner cv */}
-      <div className="max-w-[210mm] mx-auto p-8 md:p-12 lg:p-16 print:max-w-none print:w-full print:h-[100vh] print:p-8 md:print:p-12 lg:print:p-12 box-border print:text-[14px] print:overflow-hidden">
-        <div className="grid grid-cols-12 gap-8 md:gap-12 print:gap-8 print:h-full">
+      <div className="max-w-[210mm] mx-auto p-8 md:p-12 lg:p-16 print:max-w-none print:w-full print:h-[100vh] print:p-8 box-border print:text-[14px] print:overflow-hidden">
+        <div className="grid grid-cols-12 gap-8 md:gap-12 print:gap-6 print:h-full">
           {/* levy sloupec (kontakt a dovednosti) */}
-          <div className="col-span-12 md:col-span-4 print:col-span-4 flex flex-col gap-10 print:gap-8">
+          <div className="col-span-12 md:col-span-4 print:col-span-4 flex flex-col gap-10 print:gap-6">
             <div className="relative inline-block self-start z-10 print-break-inside-avoid">
-              <div className="relative w-32 h-40 md:w-36 md:h-48 print:w-[32mm] print:h-[40mm] overflow-hidden grayscale contrast-125">
+              <div className="relative w-32 h-40 md:w-36 md:h-48 print:w-[32mm] print:h-[40mm] overflow-hidden">
                 <Image
                   src="/portrait.jpg"
                   alt={siteConfig.name}
@@ -111,7 +97,7 @@ export default async function CVPage({ params }: { params: Promise<{ locale: str
             </div>
 
             <section>
-              <h2 className="text-xl font-medium mb-6 print:mb-4 lowercase relative inline-block z-10 print:break-after-avoid">
+              <h2 className="text-xl font-medium mb-6 print:mb-3 lowercase relative inline-block z-10 print:break-after-avoid">
                 {t("contact.title")}
                 <Scribble
                   type="underline"
@@ -173,13 +159,13 @@ export default async function CVPage({ params }: { params: Promise<{ locale: str
               </div>
             </section>
 
-            <section className="flex flex-col gap-6 print:gap-5 lowercase">
+            <section className="flex flex-col gap-6 print:gap-4 lowercase">
               {skillsConfig.map((group, i) => {
                 const categoryName = t(`skills.categories.${group.key}`);
                 return (
                   <div key={group.key} className="print-break-inside-avoid flex flex-col">
                     {i === 0 && (
-                      <h2 className="text-xl font-medium mb-6 print:mb-4 lowercase relative inline-block z-10 self-start">
+                      <h2 className="text-xl font-medium mb-6 print:mb-3 lowercase relative inline-block z-10 self-start">
                         {t("skills.title")}
                         <Scribble
                           type="underline"
@@ -205,8 +191,8 @@ export default async function CVPage({ params }: { params: Promise<{ locale: str
           </div>
 
           {/* pravy sloupec (hlavni obsah) */}
-          <div className="col-span-12 md:col-span-8 print:col-span-8">
-            <header className="mb-10 print:mb-8">
+          <div className="col-span-12 md:col-span-8 print:col-span-8 flex flex-col">
+            <header className="mb-10 print:mb-6">
               <h1 className="text-5xl md:text-6xl print:text-5xl font-medium tracking-tight mb-2 print:mb-1 lowercase relative inline-block z-10">
                 {siteConfig.name}
                 <Scribble
@@ -221,11 +207,11 @@ export default async function CVPage({ params }: { params: Promise<{ locale: str
               </div>
             </header>
 
-            <section className="mb-10 print:mb-8 text-base print:text-[14px] leading-relaxed relative flex items-start gap-4">
+            <section className="mb-10 print:mb-6 text-base print:text-[14px] leading-relaxed relative flex items-start gap-4">
               <Scribble
                 type="arrowRight"
                 trigger="static"
-                className="w-8 h-8 text-brand shrink-0 mt-1"
+                className="w-8 h-8 text-brand shrink-0 mt-1 print:w-6 print:h-6"
               />
               <p className="relative z-10">
                 {t.rich("about.cvProfile", {
@@ -243,11 +229,11 @@ export default async function CVPage({ params }: { params: Promise<{ locale: str
               </p>
             </section>
 
-            <section className="mb-10 print:mb-8 flex flex-col gap-6 print:gap-5">
+            <section className="mb-10 print:mb-6 flex flex-col gap-6 print:gap-4">
               {experienceItems.map((exp, i) => (
                 <div key={i} className="lowercase print-break-inside-avoid flex flex-col">
                   {i === 0 && (
-                    <h2 className="text-2xl print:text-xl font-medium mb-6 print:mb-4 lowercase relative inline-block z-10 self-start">
+                    <h2 className="text-2xl print:text-xl font-medium mb-6 print:mb-3 lowercase relative inline-block z-10 self-start">
                       {t("experience.title")}
                       <Scribble
                         type="underline"
@@ -276,11 +262,11 @@ export default async function CVPage({ params }: { params: Promise<{ locale: str
               ))}
             </section>
 
-            <section className="flex flex-col gap-6 print:gap-5">
+            <section className="flex flex-col gap-6 print:gap-4">
               {educationItems.map((edu, i) => (
                 <div key={i} className="lowercase print-break-inside-avoid flex flex-col">
                   {i === 0 && (
-                    <h2 className="text-2xl print:text-xl font-medium mb-6 print:mb-4 lowercase relative inline-block z-10 self-start">
+                    <h2 className="text-2xl print:text-xl font-medium mb-6 print:mb-3 lowercase relative inline-block z-10 self-start">
                       {t("education.title")}
                       <Scribble
                         type="underline"

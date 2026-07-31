@@ -51,20 +51,14 @@ export function ExperienceItem({
         onMouseLeave={() => setIsHovered(false)}
       >
         {url && (
-          <div className="absolute top-4 right-4 md:top-6 md:right-6 pointer-events-none">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="w-5 h-5 text-white"
-            >
-              <line x1="7" y1="17" x2="17" y2="7" />
-              <polyline points="7 7 17 7 17 17" />
-            </svg>
+          <div className="absolute top-4 right-4 md:top-6 md:right-6 pointer-events-none w-6 h-6 transition-all duration-300 opacity-100 translate-x-0 lg:opacity-0 lg:-translate-x-2 lg:group-hover:opacity-100 lg:group-hover:translate-x-0">
+            <Scribble
+              type="arrowRight"
+              trigger="hover"
+              loops={2}
+              isActive={isHovered || isClicked}
+              className="w-full h-full text-white -rotate-45"
+            />
           </div>
         )}
         <div className="md:col-span-2 text-brand mb-1 md:mb-0">{year}</div>
