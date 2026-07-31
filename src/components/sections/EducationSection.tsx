@@ -1,7 +1,6 @@
 import { EducationCard } from "@/components/cards/EducationCard";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { siteConfig } from "@/config/site";
-import { Reveal, RevealStagger } from "@/components/ui/Reveal";
 
 import { Container } from "@/components/layout/Container";
 import { useTranslations } from "next-intl";

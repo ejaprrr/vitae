@@ -1,8 +1,8 @@
 "use client";
 
 import { Button } from "@/components/ui/Button";
-import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 import { Reveal } from "@/components/ui/Reveal";
+import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 import bkgEyes from "@/public/bkg-eyes.jpg";
 import { m } from "framer-motion";
 import Image from "next/image";

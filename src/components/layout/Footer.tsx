@@ -2,9 +2,9 @@
 
 import { Container } from "@/components/layout/Container";
 import { AnimatedLink } from "@/components/ui/AnimatedLink";
-import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 import { LocalTime } from "@/components/ui/LocalTime";
 import { Scribble } from "@/components/ui/Scribble";
+import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 import { siteConfig } from "@/config/site";
 import { useTranslations } from "next-intl";
 
@@ -39,10 +39,7 @@ export function Footer() {
               {siteConfig.name} © {new Date().getFullYear()}
             </span>
             <span>
-              <AnimatedLink
-                href={`mailto:${siteConfig.email}`}
-                external
-              >
+              <AnimatedLink href={`mailto:${siteConfig.email}`} external>
                 {siteConfig.email}
               </AnimatedLink>
             </span>
@@ -58,10 +55,7 @@ export function Footer() {
               <MadeWithLove />
               <span className="text-black/50 text-sm md:text-base">
                 {t("footer.openSource")}{" "}
-                <AnimatedLink
-                  href="https://github.com/ejaprrr/art"
-                  external
-                >
+                <AnimatedLink href="https://github.com/ejaprrr/art" external>
                   github
                 </AnimatedLink>
               </span>

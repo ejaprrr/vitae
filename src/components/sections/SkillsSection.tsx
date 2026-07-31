@@ -1,7 +1,7 @@
+import { SkillCard } from "@/components/cards/SkillCard";
 import { Container } from "@/components/layout/Container";
 import { RevealStagger } from "@/components/ui/Reveal";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { SkillCard } from "@/components/cards/SkillCard";
 import { sectionsConfig, skillsConfig } from "@/config/site";
 import { useTranslations } from "next-intl";
 

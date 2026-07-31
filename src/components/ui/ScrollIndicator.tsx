@@ -1,9 +1,9 @@
 "use client";
 
 import { useScribblePath } from "@/hooks/scribbles/useScribblePath";
+import { useRouter } from "@/i18n/routing";
 import { MotionConfig, m } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { useRouter } from "@/i18n/routing";
 import { useEffect, useState } from "react";
 
 interface ScrollIndicatorProps {

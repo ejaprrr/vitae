@@ -62,7 +62,7 @@ export function Button({
             isTouchDevice && isClicked
               ? {
                   scale: 0.95,
-                  backgroundColor: "var(--brand)",
+                  backgroundColor: "#ff0000",
                   color: "#000000",
                   rotate: hoverAngle,
                 }
@@ -72,7 +72,7 @@ export function Button({
             !isTouchDevice
               ? {
                   scale: 1.05,
-                  backgroundColor: "var(--brand)",
+                  backgroundColor: "#ff0000",
                   color: "#000000",
                   rotate: hoverAngle,
                 }
@@ -80,7 +80,7 @@ export function Button({
           }
           whileTap={{
             scale: 0.95,
-            backgroundColor: "var(--brand)",
+            backgroundColor: "#ff0000",
             color: "#000000",
             rotate: isTouchDevice ? hoverAngle : hoverAngle * -0.5,
           }}
@@ -105,7 +105,7 @@ export function Button({
             isTouchDevice && isClicked
               ? {
                   scale: 0.95,
-                  backgroundColor: "var(--brand)",
+                  backgroundColor: "#ff0000",
                   color: "#000000",
                   rotate: hoverAngle,
                 }
@@ -115,7 +115,7 @@ export function Button({
             !isTouchDevice
               ? {
                   scale: 1.05,
-                  backgroundColor: "var(--brand)",
+                  backgroundColor: "#ff0000",
                   color: "#000000",
                   rotate: hoverAngle,
                 }
@@ -123,7 +123,7 @@ export function Button({
           }
           whileTap={{
             scale: 0.95,
-            backgroundColor: "var(--brand)",
+            backgroundColor: "#ff0000",
             color: "#000000",
             rotate: isTouchDevice ? hoverAngle : hoverAngle * -0.5,
           }}

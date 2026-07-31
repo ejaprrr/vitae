@@ -1,8 +1,8 @@
 "use client";
 
 import { Container } from "@/components/layout/Container";
-import { AnimatedLink } from "@/components/ui/AnimatedLink";
 import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
+import { AnimatedLink } from "@/components/ui/AnimatedLink";
 import { Scribble } from "@/components/ui/Scribble";
 import { navSections, siteConfig } from "@/config/site";
 import { AnimatePresence, m } from "framer-motion";

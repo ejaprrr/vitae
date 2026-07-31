@@ -1,6 +1,5 @@
-import { Container } from "@/components/layout/Container";
 import { ExperienceCard } from "@/components/cards/ExperienceCard";
-import { Reveal, RevealStagger } from "@/components/ui/Reveal";
+import { Container } from "@/components/layout/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { siteConfig } from "@/config/site";
 import { useTranslations } from "next-intl";

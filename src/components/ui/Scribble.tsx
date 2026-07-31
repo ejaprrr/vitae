@@ -82,7 +82,15 @@ export function Scribble({
           if (rest.onClick) rest.onClick(e);
         }}
         {...(() => {
-          const { onMouseEnter, onMouseLeave, onTouchStart, onTouchEnd, onTouchCancel, onClick, ...otherProps } = rest;
+          const {
+            onMouseEnter,
+            onMouseLeave,
+            onTouchStart,
+            onTouchEnd,
+            onTouchCancel,
+            onClick,
+            ...otherProps
+          } = rest;
           return otherProps;
         })()}
       >
