@@ -44,7 +44,7 @@ export const skillsConfig: SkillCategory[] = [
     items: [
       { name: "figma", url: "https://www.figma.com/" },
       { name: "photoshop", url: "https://www.adobe.com/products/photoshop.html" },
-      { name: "blender", url: "https://www.blender.org/" },
+      { name: "canva", url: "https://www.canva.com/" },
       { name: "after effects", url: "https://www.adobe.com/products/aftereffects.html" },
       { name: "davinci resolve", url: "https://www.blackmagicdesign.com/products/davinciresolve" },
     ],
