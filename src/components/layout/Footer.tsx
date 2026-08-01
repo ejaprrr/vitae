@@ -13,10 +13,8 @@ export function Footer() {
   return (
     <footer className="w-full bg-white text-black">
       <Container className="pt-20 pb-12 sm:pt-32 sm:pb-24 relative z-10 flex flex-col gap-16 md:gap-32">
-        
         {/* Main Typography Row */}
         <div className="flex flex-col xl:flex-row justify-between items-start gap-12 xl:gap-8">
-          
           {/* Big Name */}
           <h2 className="text-5xl sm:text-7xl md:text-8xl lg:text-[7rem] leading-[0.9] lowercase tracking-tighter max-w-2xl">
             {siteConfig.name.split(" ").map((word, i) => (
@@ -41,23 +39,24 @@ export function Footer() {
               </AnimatedLink>
             ))}
             <AnimatedLink
-                href={`mailto:${siteConfig.email}`}
-                type="circle"
-                loops={2}
-                className="w-max text-right text-brand mt-2 xl:mt-4"
-                external
-              >
-                {siteConfig.email}
+              href={`mailto:${siteConfig.email}`}
+              type="circle"
+              loops={2}
+              className="w-max text-right text-brand mt-2 xl:mt-4"
+              external
+            >
+              {siteConfig.email}
             </AnimatedLink>
           </div>
         </div>
 
         {/* Bottom Bar: Pure Typography */}
         <div className="flex flex-col md:flex-row justify-between items-center md:items-end gap-10 text-xl sm:text-2xl md:text-3xl font-medium lowercase tracking-tight">
-          
           {/* Left: Copyright */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left w-full md:w-1/3 order-2 md:order-none">
-            <span>© {new Date().getFullYear()} {siteConfig.name}</span>
+            <span>
+              © {new Date().getFullYear()} {siteConfig.name}
+            </span>
             <span>{t("footer.reservedRights")}</span>
           </div>
 
@@ -68,17 +67,20 @@ export function Footer() {
 
           {/* Right: Made with love */}
           <div className="flex flex-col items-center md:items-end text-center md:text-right w-full md:w-1/3 order-3 md:order-none">
-             <span className="flex items-center">
-               {t("footer.madeWithLove")}&nbsp;
-               <Scribble type="heart" trigger="static" loops={2} className="w-6 h-6 text-brand translate-y-[-2px] ml-1" />
-             </span>
-             <AnimatedLink href="https://github.com/ejaprrr/vitae" type="underline" external>
-               {t("footer.openSource")} github
-             </AnimatedLink>
+            <span className="flex items-center">
+              {t("footer.madeWithLove")}&nbsp;
+              <Scribble
+                type="heart"
+                trigger="static"
+                loops={2}
+                className="w-6 h-6 text-brand translate-y-[-2px] ml-1"
+              />
+            </span>
+            <AnimatedLink href="https://github.com/ejaprrr/vitae" type="underline" external>
+              {t("footer.openSource")} github
+            </AnimatedLink>
           </div>
-
         </div>
-
       </Container>
     </footer>
   );

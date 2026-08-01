@@ -138,7 +138,10 @@ export function useScribbleAnimation(
       transition: {
         duration: isActive ? 0.3 : 0.4,
         ease: (isActive ? "easeOut" : "easeIn") as Easing,
-        opacity: { duration: isActive ? 0.01 : 0.4, ease: (isActive ? "linear" : "easeIn") as Easing },
+        opacity: {
+          duration: isActive ? 0.01 : 0.4,
+          ease: (isActive ? "linear" : "easeIn") as Easing,
+        },
         delay: trigger === "static" ? delay : 0,
       },
     };

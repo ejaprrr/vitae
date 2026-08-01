@@ -13,7 +13,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 
-import { constructMetadata, getPersonJsonLd, siteConfig } from "@/config/site";
+import { constructMetadata, getPersonJsonLd } from "@/config/site";
 
 const font = Outfit({
   subsets: ["latin", "latin-ext"],

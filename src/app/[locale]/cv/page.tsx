@@ -45,7 +45,7 @@ export default async function CVPage({ params }: { params: Promise<{ locale: str
   }>;
 
   return (
-    <div className="bg-white min-h-screen print:min-h-0 text-black font-sans selection:bg-brand selection:text-white pb-20 print:pb-0">
+    <div className="bg-background min-h-screen print:min-h-0 text-foreground font-sans selection:bg-brand selection:text-white pb-20 print:pb-0">
       <style
         dangerouslySetInnerHTML={{
           __html: `
@@ -55,11 +55,8 @@ export default async function CVPage({ params }: { params: Promise<{ locale: str
         @media print {
           html, body {
             width: 100% !important;
-            height: 100% !important;
-            max-height: 100% !important;
             margin: 0 !important;
             padding: 0 !important;
-            overflow: hidden !important;
             background: white !important;
           }
           body {
@@ -74,8 +71,8 @@ export default async function CVPage({ params }: { params: Promise<{ locale: str
       <PrintController />
 
       {/* hlavni kontejner cv */}
-      <div className="max-w-[210mm] mx-auto p-8 md:p-12 lg:p-16 print:max-w-none print:w-full print:h-[100vh] print:p-8 box-border print:text-[14px] print:overflow-hidden">
-        <div className="grid grid-cols-12 gap-8 md:gap-12 print:gap-6 print:h-full">
+      <div className="max-w-[210mm] mx-auto p-8 md:p-12 lg:p-16 print:max-w-none print:w-full print:p-8 box-border print:text-[14px]">
+        <div className="grid grid-cols-12 gap-8 md:gap-12 print:gap-6">
           {/* levy sloupec (kontakt a dovednosti) */}
           <div className="col-span-12 md:col-span-4 print:col-span-4 flex flex-col gap-10 print:gap-6">
             <div className="relative inline-block self-start z-10 print-break-inside-avoid">
@@ -106,26 +103,26 @@ export default async function CVPage({ params }: { params: Promise<{ locale: str
                 />
               </h2>
               <div className="flex flex-col gap-2.5 print:gap-1.5 text-base print:text-[14px] lowercase">
-                <span className="font-medium text-black">{siteConfig.location}</span>
+                <span className="font-medium text-foreground">{siteConfig.location}</span>
 
                 <div className="flex flex-col gap-1 print:gap-0.5">
                   <a
                     href={siteConfig.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-brand transition-colors font-medium text-black"
+                    className="hover:text-brand transition-colors font-medium text-foreground"
                   >
                     {siteConfig.domain}
                   </a>
                   <a
                     href={`mailto:${siteConfig.email}`}
-                    className="hover:text-brand transition-colors text-black/80"
+                    className="hover:text-brand transition-colors text-foreground"
                   >
                     {siteConfig.email}
                   </a>
                 </div>
 
-                <div className="flex items-center gap-2 text-black/70 text-sm print:text-[13px] pt-1 print:pt-0.5 flex-wrap">
+                <div className="flex items-center gap-2 text-foreground text-sm print:text-[13px] pt-1 print:pt-0.5 flex-wrap">
                   {(() => {
                     const gh = siteConfig.social.find((s) => s.label === "github");
                     const li = siteConfig.social.find((s) => s.label === "linkedin");
@@ -141,7 +138,7 @@ export default async function CVPage({ params }: { params: Promise<{ locale: str
                             {gh.label}/{gh.handle}
                           </a>
                         )}
-                        {gh && li && <span className="text-black/30">/</span>}
+                        {gh && li && <span className="text-foreground">/</span>}
                         {li && (
                           <a
                             href={li.href}
@@ -174,7 +171,7 @@ export default async function CVPage({ params }: { params: Promise<{ locale: str
                         />
                       </h2>
                     )}
-                    <h3 className="text-black/60 font-medium mb-2 print:mb-1 relative inline-block z-10 self-start">
+                    <h3 className="text-foreground font-medium mb-2 print:mb-1 relative inline-block z-10 self-start">
                       {categoryName}
                     </h3>
                     <div className="flex flex-col gap-1 print:gap-0 text-base print:text-[14px] print:leading-tight">
@@ -207,11 +204,11 @@ export default async function CVPage({ params }: { params: Promise<{ locale: str
               </div>
             </header>
 
-            <section className="mb-10 print:mb-6 text-base print:text-[14px] leading-relaxed relative flex items-start gap-4">
+            <section className="mb-10 print:mb-6 text-base print:text-[14px] leading-relaxed relative">
               <Scribble
                 type="arrowRight"
                 trigger="static"
-                className="w-8 h-8 text-brand shrink-0 mt-1 print:w-6 print:h-6"
+                className="absolute -left-10 top-0 w-8 h-8 text-brand print:w-6 print:h-6 print:-left-8"
               />
               <p className="relative z-10">
                 {t.rich("about.cvProfile", {
@@ -219,7 +216,7 @@ export default async function CVPage({ params }: { params: Promise<{ locale: str
                     <HighlightedText
                       type="underline"
                       trigger="static"
-                      className="relative inline-block z-10 text-black font-medium"
+                      className="relative inline-block z-10 text-foreground font-medium"
                       scribbleClassName="absolute -bottom-1 left-0 w-full h-2 text-brand -z-10"
                     >
                       {chunks}
@@ -244,7 +241,7 @@ export default async function CVPage({ params }: { params: Promise<{ locale: str
                   )}
                   <div className="flex justify-between items-baseline mb-1 print:mb-0">
                     <h3 className="text-xl print:text-lg font-medium">{exp.title}</h3>
-                    <span className="text-black/60 print:text-[14px] font-medium shrink-0 relative z-10">
+                    <span className="text-foreground print:text-[14px] font-medium shrink-0 relative z-10">
                       {exp.year}
                     </span>
                   </div>
@@ -291,7 +288,7 @@ export default async function CVPage({ params }: { params: Promise<{ locale: str
                         </span>
                       ))}
                     </h3>
-                    <span className="text-black/60 print:text-[14px] font-medium shrink-0 relative z-10">
+                    <span className="text-foreground print:text-[14px] font-medium shrink-0 relative z-10">
                       {edu.year}
                     </span>
                   </div>

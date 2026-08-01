@@ -1,11 +1,7 @@
 {
   "global": {
     "openLink": "otevřít odkaz",
-    "roles": [
-      "vývojář",
-      "designer",
-      "analytik"
-    ],
+    "roles": ["vývojář", "designer", "analytik"],
     "close": "zavřít",
     "menu": "menu",
     "switchLanguage": "změnit jazyk na {lang}",
@@ -32,14 +28,14 @@
       "baví mě tvořit v\u00A0prostředí, které staví na <highlight>otevřené komunikaci a týmové spolupráci.</highlight> díky analytickému základu umím složité problémy rozbít na jasné kroky a propojit čistou technickou logiku s\u00A0pohledem <highlightScribble>běžného uživatele.</highlightScribble> mým cílem je stavět smysluplné digitální produkty s\u00A0reálným dopadem."
     ],
     "cvButton": "stáhnout cv",
-    "cvProfile": "<highlight>vývojář, designér a datový analytik.</highlight> plynule mluvím anglicky a domluvím se i španělsky. zakládám si na transparentní komunikaci v týmu a spojuji čistý kód, analytické řešení problémů a promyšlený design pro tvorbu robustních moderních aplikací."
+    "cvProfile": "<highlight>vývojář, designér a datový analytik.</highlight> plynule mluvím anglicky a učím se španělsky. zakládám si na transparentní komunikaci v týmu a spojuji čistý kód, analytické řešení problémů a promyšlený design pro tvorbu robustních moderních aplikací."
   },
   "experience": {
     "title": "zkušenosti",
     "items": [
       {
-        "year": "2026 – 2027",
-        "title": "bod",
+        "year": "2026 – současnost",
+        "title": "bod – školní informační systém",
         "role": "ui/ux, devops & analytické jádro",
         "location": "maturitní projekt",
         "description": "návrh a vývoj moderního, modulárního <highlight>informačního systému</highlight> pro školy. v rámci asymetrické fullstack architektury mám na starosti uživatelské rozhraní, devops procesy a vývoj analytického jádra.",
