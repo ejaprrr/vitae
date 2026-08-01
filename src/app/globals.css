@@ -29,6 +29,7 @@ body {
 * {
   letter-spacing: -0.09em !important;
   -webkit-tap-highlight-color: transparent;
+  text-wrap: pretty;
 }
 
 html {

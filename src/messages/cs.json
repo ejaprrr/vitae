@@ -28,15 +28,23 @@
     "title": "o mně",
     "statement": "stavím spolehlivé digitální produkty. čistý kód, <highlight1>strukturovaná data</highlight1> a design, který <highlight2>dává smysl.</highlight2>",
     "paragraphs": [
-      "<highlight>studuji informatiku a datovou analytiku.</highlight> zaměřuji se primárně na vývoj, logiku a architekturu. stabilní kód je ale podle mě jen polovina úspěchu. proto intenzivně řeším i <highlightScribble>uživatelské rozhraní a design.</highlightScribble> dobrý vizuál přímo určuje, jestli lidé budou aplikaci rádi používat.",
-      "baví mě tvořit v prostředí, které staví na <highlight>otevřené komunikaci a týmové spolupráci.</highlight> díky analytickému základu umím složité problémy rozbít na jasné kroky a propojit čistou technickou logiku s <highlightScribble>pohledem běžného uživatele.</highlightScribble> mým cílem je stavět smysluplné digitální produkty s reálným dopadem."
+      "<highlight>studuji informatiku a datovou analytiku.</highlight> zaměřuji se primárně na vývoj, logiku a architekturu. stabilní kód je ale podle mě jen polovina úspěchu. proto intenzivně řeším i\u00A0<highlightScribble>uživatelské rozhraní a design.</highlightScribble> dobrý vizuál přímo určuje, jestli lidé budou aplikaci rádi používat.",
+      "baví mě tvořit v\u00A0prostředí, které staví na <highlight>otevřené komunikaci a týmové spolupráci.</highlight> díky analytickému základu umím složité problémy rozbít na jasné kroky a propojit čistou technickou logiku s\u00A0pohledem <highlightScribble>běžného uživatele.</highlightScribble> mým cílem je stavět smysluplné digitální produkty s\u00A0reálným dopadem."
     ],
     "cvButton": "stáhnout cv",
-    "cvProfile": "<highlight>vývojář, designér a datový analytik.</highlight> rychle se adaptuji na nové výzvy a zakládám si na transparentní komunikaci v týmu. spojuji čistý kód, analytické řešení problémů a promyšlený design pro tvorbu robustních moderních aplikací."
+    "cvProfile": "<highlight>vývojář, designér a datový analytik.</highlight> plynule mluvím anglicky a domluvím se i španělsky. zakládám si na transparentní komunikaci v týmu a spojuji čistý kód, analytické řešení problémů a promyšlený design pro tvorbu robustních moderních aplikací."
   },
   "experience": {
     "title": "zkušenosti",
     "items": [
+      {
+        "year": "2026 – 2027",
+        "title": "bod",
+        "role": "ui/ux, devops & analytické jádro",
+        "location": "maturitní projekt",
+        "description": "návrh a vývoj moderního, modulárního <highlight>informačního systému</highlight> pro školy. v rámci asymetrické fullstack architektury mám na starosti uživatelské rozhraní, devops procesy a vývoj analytického jádra.",
+        "url": "https://github.com/bodhq/bod"
+      },
       {
         "year": "jaro 2026",
         "title": "alboránplus",

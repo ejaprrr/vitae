@@ -28,11 +28,19 @@
       "i thrive in collaborative environments that value <highlight>open communication and teamwork.</highlight> my analytical background helps me break down complex problems and bridge the gap between pure technical logic and the <highlightScribble>end-user experience.</highlightScribble> my ultimate goal is to build meaningful digital products that leave a lasting real-world impact."
     ],
     "cvButton": "download cv",
-    "cvProfile": "<highlight>software developer, designer, and data analyst.</highlight> i adapt quickly to new challenges and value transparent communication within a team. blending clean code, analytical problem-solving, and purposeful design to build robust modern applications."
+    "cvProfile": "<highlight>software developer, designer, and data analyst.</highlight> i speak fluent english and can communicate in spanish as well. i value transparent communication within a team, blending clean code, analytical problem-solving, and purposeful design to build robust modern applications."
   },
   "experience": {
     "title": "experience",
     "items": [
+      {
+        "year": "2026 – 2027",
+        "title": "bod",
+        "role": "ui/ux, devops & analytics core",
+        "location": "graduation project",
+        "description": "designing and developing a modern, modular <highlight>information system</highlight> for schools. within the asymmetric fullstack architecture, i am responsible for ui/ux design, devops processes, and the development of the analytics core.",
+        "url": "https://github.com/bodhq/bod"
+      },
       {
         "year": "spring 2026",
         "title": "alboránplus",
