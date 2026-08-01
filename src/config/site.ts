@@ -8,8 +8,6 @@ export const siteConfig = {
   url: "https://www.eliasjp.cz",
   domain: "www.eliasjp.cz",
   email: "e.japrrr@gmail.com",
-  roles: ["vývojář", "designer", "analytik"],
-  location: "plzeň, cz",
   nav: navSections,
   sections: sectionsConfig,
   social: socialConfig,

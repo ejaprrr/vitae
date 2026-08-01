@@ -103,7 +103,7 @@ export default async function CVPage({ params }: { params: Promise<{ locale: str
                 />
               </h2>
               <div className="flex flex-col gap-2.5 print:gap-1.5 text-base print:text-[14px] lowercase">
-                <span className="font-medium text-foreground">{siteConfig.location}</span>
+                <span className="font-medium text-foreground">{t("global.location")}</span>
 
                 <div className="flex flex-col gap-1 print:gap-0.5">
                   <a
@@ -200,7 +200,7 @@ export default async function CVPage({ params }: { params: Promise<{ locale: str
                 />
               </h1>
               <div className="text-xl print:text-lg text-brand font-medium lowercase mt-2 print:mt-1">
-                {siteConfig.roles.join(" / ")}
+                {(t.raw("global.roles") as string[]).join(" / ")}
               </div>
             </header>
 

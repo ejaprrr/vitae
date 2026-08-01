@@ -5,7 +5,7 @@ export function getSiteUrl(): string {
   return siteConfig.url;
 }
 
-export function getPersonJsonLd() {
+export function getPersonJsonLd(jobTitle: string) {
   return {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -13,7 +13,7 @@ export function getPersonJsonLd() {
     url: siteConfig.url,
     email: siteConfig.email,
     sameAs: socialConfig.map((s) => s.href),
-    jobTitle: "vývojář, designer, analytik",
+    jobTitle,
     knowsLanguage: ["cs", "en"],
   };
 }

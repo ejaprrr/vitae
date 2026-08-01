@@ -1,7 +1,8 @@
 {
   "global": {
     "openLink": "otevřít odkaz",
-    "roles": ["vývojář", "designer", "analytik"],
+    "roles": ["vývojář", "designér", "analytik"],
+    "location": "plzeň, cz",
     "close": "zavřít",
     "menu": "menu",
     "switchLanguage": "změnit jazyk na {lang}",
@@ -9,8 +10,8 @@
     "scrollToTop": "zpět nahoru"
   },
   "seo": {
-    "title": "eliáš jan procházka | vývojář, designer, analytik",
-    "description": "softwarový vývojář, designer a datový analytik. stavím digitální produkty pomocí čistého kódu a promyšleného designu."
+    "title": "eliáš jan procházka | vývojář, designér, analytik",
+    "description": "stavím spolehlivé digitální produkty. čistý kód, strukturovaná data a design, který dává smysl."
   },
   "nav": {
     "about": "o mně",

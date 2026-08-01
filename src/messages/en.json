@@ -2,6 +2,7 @@
   "global": {
     "openLink": "view project",
     "roles": ["developer", "designer", "analyst"],
+    "location": "pilsen, cz",
     "close": "close",
     "menu": "menu",
     "switchLanguage": "switch language to {lang}",
@@ -10,7 +11,7 @@
   },
   "seo": {
     "title": "eliáš jan procházka | developer, designer, analyst",
-    "description": "software developer, designer, and data analyst. i build digital products with clean code and purposeful design."
+    "description": "i build reliable digital products. clean code, structured data, and design that makes sense."
   },
   "nav": {
     "about": "about",

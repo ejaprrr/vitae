@@ -53,7 +53,9 @@ export default async function RootLayout({
   }
 
   const messages = await getMessages();
-  const jsonLd = getPersonJsonLd();
+  const tGlobal = await getTranslations({ locale, namespace: "global" });
+  const roles = tGlobal.raw("roles") as string[];
+  const jsonLd = getPersonJsonLd(roles.join(", "));
 
   return (
     <html lang={locale} className="h-full antialiased" data-scroll-behavior="smooth">
