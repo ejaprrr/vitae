@@ -1,7 +1,11 @@
 {
   "global": {
     "openLink": "otevřít odkaz",
-    "roles": ["vývojář", "designer", "analytik"],
+    "roles": [
+      "vývojář",
+      "designer",
+      "analytik"
+    ],
     "close": "zavřít",
     "menu": "menu",
     "switchLanguage": "změnit jazyk na {lang}",
@@ -102,6 +106,7 @@
   "footer": {
     "socialTitle": "sociální sítě",
     "madeWithLove": "vytvořeno s",
-    "openSource": "open-source na"
+    "openSource": "open-source na",
+    "reservedRights": "všechna práva vyhrazena"
   }
 }
