@@ -250,7 +250,7 @@ export default async function CVPage({ params }: { params: Promise<{ locale: str
                   </div>
                   <p className="text-base print:text-[14px] leading-relaxed">
                     {parseHighlights(exp.description, (inner, idx) => (
-                      <span key={idx} className="relative inline-block z-10 text-brand font-medium">
+                      <span key={idx} className="relative z-10 text-brand font-medium">
                         {inner}
                       </span>
                     ))}
@@ -280,7 +280,7 @@ export default async function CVPage({ params }: { params: Promise<{ locale: str
                           {parseHighlights(part, (inner, hlIdx) => (
                             <span
                               key={hlIdx}
-                              className="relative inline-block z-10 text-brand font-medium"
+                              className="relative z-10 text-brand font-medium"
                             >
                               {inner}
                             </span>
