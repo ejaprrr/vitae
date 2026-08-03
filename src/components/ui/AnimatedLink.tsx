@@ -14,6 +14,7 @@ interface AnimatedLinkProps {
   onClick?: () => void;
   external?: boolean;
   loops?: number;
+  "aria-label"?: string;
 }
 
 export function AnimatedLink({
@@ -25,6 +26,7 @@ export function AnimatedLink({
   onClick,
   external = false,
   loops = 1,
+  ...props
 }: AnimatedLinkProps) {
   const { navigateWithGrace, navigatingTo } = useGraceNavigation();
   const isClicked = navigatingTo === href;
@@ -43,6 +45,7 @@ export function AnimatedLink({
         className={className}
         target={external ? "_blank" : undefined}
         rel={external ? "noopener noreferrer" : undefined}
+        aria-label={props["aria-label"]}
       >
         {children}
       </Component>
@@ -56,6 +59,7 @@ export function AnimatedLink({
       onClick={handleClick}
       target={external ? "_blank" : undefined}
       rel={external ? "noopener noreferrer" : undefined}
+      aria-label={props["aria-label"]}
       className={`relative group inline-block ${className}`}
       type={type}
       trigger="hover"

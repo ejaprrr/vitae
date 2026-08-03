@@ -20,6 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       languages: {
         cs: `${baseUrl}${route.startsWith("/cs") ? route : altRoute}`,
         en: `${baseUrl}${route.startsWith("/en") ? route : altRoute}`,
+        "x-default": `${baseUrl}${route.startsWith("/cs") ? route : altRoute}`,
       },
     },
   }));

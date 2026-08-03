@@ -5,16 +5,57 @@ export function getSiteUrl(): string {
   return siteConfig.url;
 }
 
-export function getPersonJsonLd(jobTitle: string) {
+export function getJsonLd(jobTitle: string, locale: string) {
   return {
     "@context": "https://schema.org",
-    "@type": "Person",
-    name: siteConfig.name,
-    url: siteConfig.url,
-    email: siteConfig.email,
-    sameAs: socialConfig.map((s) => s.href),
-    jobTitle,
-    knowsLanguage: ["cs", "en"],
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": `${siteConfig.url}/#person`,
+        name: siteConfig.name,
+        url: siteConfig.url,
+        email: siteConfig.email,
+        sameAs: socialConfig.map((s) => s.href),
+        jobTitle,
+        image: `${siteConfig.url}/opengraph-image.png`,
+        description: "frontend developer, designer, and data analyst.",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Pilsen",
+          addressCountry: "CZ",
+        },
+        alumniOf: {
+          "@type": "EducationalOrganization",
+          name: "VOŠ a SPŠE Plzeň",
+        },
+        knowsLanguage: ["cs", "en", "es"],
+        knowsAbout: ["Frontend Development", "UI/UX Design", "System Architecture", "Data Analytics", "React", "Next.js"],
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${siteConfig.url}/#website`,
+        url: siteConfig.url,
+        name: siteConfig.name,
+        description: "portfolio of eliáš jan procházka",
+        publisher: {
+          "@id": `${siteConfig.url}/#person`,
+        },
+        inLanguage: ["cs", "en"],
+      },
+      {
+        "@type": "WebPage",
+        "@id": `${siteConfig.url}/${locale}/#webpage`,
+        url: `${siteConfig.url}/${locale}`,
+        name: `${siteConfig.name} | ${jobTitle}`,
+        isPartOf: {
+          "@id": `${siteConfig.url}/#website`,
+        },
+        about: {
+          "@id": `${siteConfig.url}/#person`,
+        },
+        inLanguage: locale,
+      },
+    ],
   };
 }
 

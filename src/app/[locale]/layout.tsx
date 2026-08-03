@@ -13,7 +13,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 
-import { constructMetadata, getPersonJsonLd } from "@/config/site";
+import { constructMetadata, getJsonLd } from "@/config/site";
 
 const font = Outfit({
   subsets: ["latin", "latin-ext"],
@@ -55,7 +55,7 @@ export default async function RootLayout({
   const messages = await getMessages();
   const tGlobal = await getTranslations({ locale, namespace: "global" });
   const roles = tGlobal.raw("roles") as string[];
-  const jsonLd = getPersonJsonLd(roles.join(", "));
+  const jsonLd = getJsonLd(roles.join(", "), locale);
 
   return (
     <html lang={locale} className="h-full antialiased" data-scroll-behavior="smooth">

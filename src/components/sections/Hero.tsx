@@ -22,7 +22,8 @@ export function Hero() {
       >
         <Image
           src={bkgEyes}
-          alt="eliáš jan procházka"
+          alt=""
+          aria-hidden="true"
           placeholder="blur"
           className="w-full h-auto z-0 select-none pointer-events-none"
           priority

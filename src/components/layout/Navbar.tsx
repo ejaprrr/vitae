@@ -40,6 +40,7 @@ export function Navbar() {
                 type="circle"
                 className="text-2xl md:text-3xl font-normal tracking-tight"
                 onClick={() => setIsMenuOpen(false)}
+                aria-label={t("global.home", { default: "home" })}
               >
                 {siteConfig.shortName}
               </AnimatedLink>
