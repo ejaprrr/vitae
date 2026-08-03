@@ -5,10 +5,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = getSiteUrl();
 
   const pages = [
-    { route: "/cs", priority: 1.0, altRoute: "/en" },
-    { route: "/en", priority: 1.0, altRoute: "/cs" },
-    { route: "/cs/cv", priority: 0.5, altRoute: "/en/cv" },
-    { route: "/en/cv", priority: 0.5, altRoute: "/cs/cv" },
+    { route: "/", priority: 1.0, altRoute: "/en" },
+    { route: "/en", priority: 1.0, altRoute: "/" },
+    { route: "/cv", priority: 0.5, altRoute: "/en/cv" },
+    { route: "/en/cv", priority: 0.5, altRoute: "/cv" },
   ];
 
   return pages.map(({ route, priority, altRoute }) => ({

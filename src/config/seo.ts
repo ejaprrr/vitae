@@ -120,5 +120,9 @@ export function constructMetadata({
       description,
       images: ["/opengraph-image.png"],
     },
+    icons: {
+      icon: "/icon.png",
+      apple: "/icon.png",
+    },
   };
 }
