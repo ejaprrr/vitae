@@ -22,7 +22,7 @@ export function Hero() {
       >
         <Image
           src={bkgEyes}
-          alt=""
+          alt={t("seo.heroBackground")}
           aria-hidden="true"
           placeholder="blur"
           className="w-full h-auto z-0 select-none pointer-events-none"
@@ -33,7 +33,7 @@ export function Hero() {
         />
         <Image
           src={bkgEyes}
-          alt=""
+          alt={t("seo.heroBackground")}
           aria-hidden="true"
           placeholder="blur"
           className="w-full h-auto z-0 block md:hidden select-none pointer-events-none"
@@ -42,7 +42,7 @@ export function Hero() {
         />
         <Image
           src={bkgEyes}
-          alt=""
+          alt={t("seo.heroBackground")}
           aria-hidden="true"
           placeholder="blur"
           className="w-full h-auto z-0 block sm:hidden select-none pointer-events-none"

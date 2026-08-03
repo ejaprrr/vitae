@@ -7,9 +7,11 @@
     "menu": "menu",
     "switchLanguage": "switch language to {lang}",
     "scrollToAbout": "scroll to about section",
-    "scrollToTop": "back to top"
+    "scrollToTop": "back to top",
+    "home": "home"
   },
   "seo": {
+    "heroBackground": "abstract portfolio background graphic",
     "title": "eliáš jan procházka | frontend developer, designer, data analyst",
     "description": "portfolio of eliáš jan procházka, a frontend developer, designer, and data analyst. building modern digital products with next.js, clean code, and purposeful design."
   },

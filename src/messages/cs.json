@@ -7,9 +7,11 @@
     "menu": "menu",
     "switchLanguage": "změnit jazyk na {lang}",
     "scrollToAbout": "přejít na sekci o mně",
-    "scrollToTop": "zpět nahoru"
+    "scrollToTop": "zpět nahoru",
+    "home": "domů"
   },
   "seo": {
+    "heroBackground": "abstraktní grafika na pozadí portfolia",
     "title": "eliáš jan procházka | frontend vývojář, designér, datový analytik",
     "description": "portfolio eliáše jana procházky, frontend vývojáře, designéra a datového analytika. stavím moderní digitální produkty s důrazem na čistý kód a funkční design."
   },
